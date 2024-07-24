@@ -6,22 +6,22 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.ureca.person.dto.Person;
+import com.ureca.person.dto.MarineLife;
 import com.ureca.person.model.dao.PersonDAO;
 
 @Service
-public class PersonServiceImpl implements PersonService {
+public class MarineLifeServiceImpl implements PersonService {
 
 	@Autowired
 	PersonDAO dao;
 	
 	@Override
-	public int add(Person person) throws SQLException {
+	public int add(MarineLife person) throws SQLException {
 		return dao.insert(person);
 	}
 
 	@Override
-	public int edit(Person person) throws SQLException {
+	public int edit(MarineLife person) throws SQLException {
 		return dao.update(person);
 	}
 
@@ -31,12 +31,12 @@ public class PersonServiceImpl implements PersonService {
 	}
 
 	@Override
-	public Person read(int no) throws SQLException {
+	public MarineLife read(int no) throws SQLException {
 		return dao.select(no);
 	}
 
 	@Override
-	public List<Person> readAll() throws SQLException {
+	public List<MarineLife> readAll() throws SQLException {
 		return dao.selectAll();
 	}
 

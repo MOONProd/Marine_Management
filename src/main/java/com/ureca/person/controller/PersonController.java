@@ -12,13 +12,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.ureca.person.dto.Person;
+import com.ureca.person.dto.MarineLife;
 import com.ureca.person.model.service.PersonService;
 
 import jakarta.servlet.http.HttpServletRequest;
 
 @Controller //스프링 컨테이너로 객체 관리 받고 싶어요!!
-@RequestMapping("/person")
+@RequestMapping("/")
 public class PersonController {
 	
 	@Autowired
@@ -43,17 +43,22 @@ public class PersonController {
 
  */
 	
-//	@RequestMapping("/form") //요청URL정의   ==>1.
-//	@RequestMapping(value = "/form", method = RequestMethod.GET) //요청URL정의   ==>1.
+	
+	@GetMapping("/")
+	public String start()
+	{
+		return "index";
+	}
+	
 	@GetMapping("/form")
 	public String form() {//입력폼 보이기
 	  System.out.println(">>> GET form");
 	  return "form";  //  "/WEB-INF/views/"+ "form"  + ".jsp"    ==> 5. forward이동	
 	}
 	
-//	@RequestMapping(value = "/form", method = RequestMethod.POST) //요청URL정의   ==>1.
+
 	@PostMapping("/form")
-	public String regist(Person person, Model model) {//DB입력
+	public String regist(MarineLife person, Model model) {//DB입력
 		System.out.println(">>> POST form");
 		System.out.println("person>>>"+ person);
 		
@@ -64,8 +69,7 @@ public class PersonController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-//		return "redirect:/person/list";  // 5.	
+			
 		return "redirect:list";  // 5.	
 	}
 	
@@ -75,7 +79,7 @@ public class PersonController {
 		
 		try {
 			//목록 테이블에 출력할 데이터 얻어오기
-			List<Person> list = service.readAll(); //3.			
+			List<MarineLife> list = service.readAll(); //3.			
 			
 			model.addAttribute("list", list);
 			//4.영역에 데이터를 저장! => 왜? 데이터를 View와 공유하기 위해
@@ -104,7 +108,7 @@ public class PersonController {
 	}
 	
 	@PostMapping("/upform")
-	public String modify(Person person) {//DB수정 요청
+	public String modify(MarineLife person) {//DB수정 요청
 		try {
 			service.edit(person);
 		} catch (SQLException e) {
