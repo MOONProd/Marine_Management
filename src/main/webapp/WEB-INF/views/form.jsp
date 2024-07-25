@@ -123,7 +123,7 @@
 			    </c:if>
             </div>
             <div class="form-group">
-			    <label for="birthYear">탄생 년도:</label>
+			    <label for="birthYear">태어난 해</label>
 			    <input type="text" id="birthYear" name="birthYear" value="${marine.birthYear}" maxlength="4"
 			           class="${not empty error ? 'error-input' : ''}" required>
 			    <c:if test="${not empty error}">

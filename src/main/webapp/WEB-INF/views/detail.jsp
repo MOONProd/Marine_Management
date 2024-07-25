@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -61,12 +62,19 @@
         <p><strong>성별:</strong> ${marine.gender}</p>
         <p><strong>입사 날짜:</strong> ${marine.admissionDate}</p>
         <p><strong>부상 유무:</strong> ${marine.injuryType}</p>
-        <div class="profile-info">
-            <p><strong>부상 내용:</strong> ${marine.injuryContent}</p>
-            <p><strong>부상 날짜:</strong> ${marine.injuryDate}</p>
-            <p><strong>복귀 날짜:</strong> ${marine.recoveryDate}</p>
-        </div>
+        <c:if test="${marine.injuryType == '유'}">
+            <div class="profile-info">
+                <p><strong>부상 내용:</strong> ${marine.injuryContent}</p>
+                <p><strong>부상 날짜:</strong> ${marine.injuryDate}</p>
+                <p><strong>복귀 날짜:</strong> ${marine.recoveryDate}</p>
+            </div>
+        </c:if>
+        <c:if test="${not empty marine.notes}">
+            <div class="profile-info">
+                <p><strong>특이 사항:</strong> ${marine.notes}</p>
+            </div>
+        </c:if>
     </div>
-    <button class="edit-button" onclick="location.href='upform?no=${marine.no}'">수정하기</button>
+    <button class="edit-button" onclick="location.href='upform.jsp?no=${marine.no}'">수정하기</button>
 </body>
 </html>
