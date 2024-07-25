@@ -75,14 +75,14 @@
 <%-- 
    list.jsp 
 
-   List<Person> list = (List<Person>)request.getAttribute("list");
+   List<marine> list = (List<marine>)request.getAttribute("list");
 
    if(list.size()>1){ 테이블 출력 
-      for(Person person:list){
-           person.getName();
+      for(marine marine:list){
+           marine.getName();
       }
    }
-   else {등록된 Person이 없습니다.}
+   else {등록된 marine이 없습니다.}
 --%>
 <body>
 	<div class="section">
@@ -107,18 +107,18 @@
 	    <tbody id="protectTable">  
 	    <%-- 
 	     items="${배열명}"  ==> 배열의 수만큼 반복
-	     items="${list}"  ==> 영역에 "list" key로 저장된 값은 new ArrayList<Person>()
+	     items="${list}"  ==> 영역에 "list" key로 저장된 값은 new ArrayList<marine>()
 	           
-	     var = "person"   ==> forEach를 통해 반복되면서 얻어오는 Person객체 한개를 저장하는 변수
+	     var = "marine"   ==> forEach를 통해 반복되면서 얻어오는 marine객체 한개를 저장하는 변수
 	     --%>
-	    <c:forEach items="${list_protect}" var="person">
+	    <c:forEach items="${list_protect}" var="marine">
 		    <tr>
-		      <td>${person.no}</td>
+		      <td>${marine.no}</td>
 		      <%-- <td><a href="upform?no=4">나지수</a></td> --%>
-		      <td>${person.type}</td>
-		      <td><a href="upform?no=${person.no}">${person.name}</a></td>
-		      <td>${person.injuryDate}</td>
-		      <td>${person.recoveryDate}</td>
+		      <td>${marine.type}</td>
+		      <td><a href="upform?no=${marine.no}">${marine.name}</a></td>
+		      <td>${marine.injuryDate}</td>
+		      <td>${marine.recoveryDate}</td>
 		    </tr>
         </c:forEach>
         </tbody> 		    

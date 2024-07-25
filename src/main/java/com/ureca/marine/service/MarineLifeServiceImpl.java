@@ -1,4 +1,4 @@
-package com.ureca.person.model.service;
+package com.ureca.marine.service;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -6,23 +6,23 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.ureca.person.dto.MarineLife;
-import com.ureca.person.model.dao.PersonDAO;
+import com.ureca.marine.dao.MarineLifeDAO;
+import com.ureca.marine.dto.MarineLife;
 
 @Service
-public class MarineLifeServiceImpl implements PersonService {
+public class MarineLifeServiceImpl implements MarineLifeService {
 
 	@Autowired
-	PersonDAO dao;
+	MarineLifeDAO dao;
 	
 	@Override
-	public int add(MarineLife person) throws SQLException {
-		return dao.insert(person);
+	public int add(MarineLife marine) throws SQLException {
+		return dao.insert(marine);
 	}
 
 	@Override
-	public int edit(MarineLife person) throws SQLException {
-		return dao.update(person);
+	public int edit(MarineLife marine) throws SQLException {
+		return dao.update(marine);
 	}
 
 	@Override

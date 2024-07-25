@@ -1,4 +1,4 @@
-package com.ureca.person.dto;
+package com.ureca.marine.dto;
 
 import java.sql.Date;
 

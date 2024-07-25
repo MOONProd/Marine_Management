@@ -1,15 +1,15 @@
-package com.ureca.person.model.service;
+package com.ureca.marine.service;
 
 import java.sql.SQLException;
 import java.util.List;
 
-import com.ureca.person.dto.MarineLife;
+import com.ureca.marine.dto.MarineLife;
 
-public interface PersonService {
-//명세 => Person 추가/수정/삭제/조회/모두조회
+public interface MarineLifeService {
+//명세 => marine 추가/수정/삭제/조회/모두조회
 	
-	public int add(MarineLife person)throws SQLException;
-	public int edit(MarineLife person)throws SQLException;
+	public int add(MarineLife marine)throws SQLException;
+	public int edit(MarineLife marine)throws SQLException;
 	public int remove(int no)throws SQLException;
 	
 	public MarineLife read(int no)throws SQLException;

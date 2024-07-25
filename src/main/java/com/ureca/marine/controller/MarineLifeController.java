@@ -1,4 +1,4 @@
-package com.ureca.person.controller;
+package com.ureca.marine.controller;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -11,17 +11,17 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.ureca.person.dto.MarineLife;
-import com.ureca.person.model.service.PersonService;
+import com.ureca.marine.dto.MarineLife;
+import com.ureca.marine.service.MarineLifeService;
 
 import jakarta.servlet.http.HttpServletRequest;
 
 @Controller //스프링 컨테이너로 객체 관리 받고 싶어요!!
 @RequestMapping("/")
-public class PersonController {
+public class MarineLifeController {
     
     @Autowired
-    PersonService service; // service = null; 기본값
+    MarineLifeService service; // service = null; 기본값
 
     @GetMapping("/")
     public String start() {
@@ -35,12 +35,12 @@ public class PersonController {
     }
 
     @PostMapping("/form")
-    public String register(MarineLife person, Model model, HttpServletRequest request) { // DB입력
+    public String register(MarineLife marine, Model model, HttpServletRequest request) { // DB입력
         System.out.println(">>> POST form");
-        System.out.println("person >>>" + person);
+        System.out.println("marine >>>" + marine);
 
         try {
-            service.add(person); // 3.
+            service.add(marine); // 3.
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -78,7 +78,7 @@ public class PersonController {
     @GetMapping("/upform")
     public String upform(@RequestParam("no") int no, Model model) { // 수정폼 보이기
         try {
-            model.addAttribute("person", service.read(no));
+            model.addAttribute("marine", service.read(no));
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -86,9 +86,9 @@ public class PersonController {
     }
 
     @PostMapping("/upform")
-    public String modify(MarineLife person) { // DB수정 요청
+    public String modify(MarineLife marine) { // DB수정 요청
         try {
-            service.edit(person);
+            service.edit(marine);
         } catch (SQLException e) {
             e.printStackTrace();
         }
