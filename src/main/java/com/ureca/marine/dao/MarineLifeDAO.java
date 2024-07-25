@@ -24,7 +24,7 @@ public interface MarineLifeDAO {
 	@Delete("delete from MarineLife where no=#{no}")
 	public int delete(int no)throws SQLException;
 	
-	@Select("select no,type,name,injuryType from MarineLife")
+	@Select("select * from MarineLife where no=#{no}")
 	public MarineLife select(int no)throws SQLException; //특정 marine 한명 조회 => 수정폼/상세페이지
 	
 	@Select("select no,name,type,admissionDate,birthYear,gender,notes from MarineLife")

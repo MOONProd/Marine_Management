@@ -126,6 +126,16 @@ public class MarineLifeController {
         }
         return "upform";
     }
+    
+    @GetMapping("/detail")
+    public String detail(@RequestParam("no") int no, Model model) { // 수정폼 보이기
+    	try {
+    		model.addAttribute("marine", service.read(no));
+    	} catch (SQLException e) {
+    		e.printStackTrace();
+    	}
+    	return "detail";
+    }
 
     @PostMapping("/upform")
     public String modify(MarineLife marine) { // DB수정 요청

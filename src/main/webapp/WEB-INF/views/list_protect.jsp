@@ -116,7 +116,7 @@
 		      <td>${marine.no}</td>
 		      <%-- <td><a href="upform?no=4">나지수</a></td> --%>
 		      <td>${marine.type}</td>
-		      <td><a href="upform?no=${marine.no}">${marine.name}</a></td>
+		      <td><a href="detail?no=${marine.no}">${marine.name}</a></td>
 		      <td>${marine.injuryDate}</td>
 		      <td>${marine.recoveryDate}</td>
 		    </tr>
