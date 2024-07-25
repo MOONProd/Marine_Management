@@ -67,7 +67,7 @@
             <h2>관리동물 리스트</h2>
             <div class="search-container">
                 <input type="text" placeholder="검색">
-                <button class="button" onclick="location.href='list'">검색</button>
+                <button class="button" onclick="location.href='list_protect'">검색</button>
             </div>
         </div>
 
@@ -75,7 +75,7 @@
             <h2>생물 리스트</h2>
             <div class="search-container">
                 <input type="text" placeholder="검색">
-                <button class="button" onclick="location.href='list'">검색</button>
+                <button class="button" onclick="location.href='list_all'">검색</button>
             </div>
         </div>
     </div>

@@ -12,13 +12,15 @@ public class MarineLife {
     private String injuryType;
     private String injuryContent;
     private String notes;
+    private Date injuryDate;
+    private Date recoveryDate;
     
     public MarineLife() {
 		// TODO Auto-generated constructor stub
 	}
 
 	public MarineLife(int no, String name, String type, Date admissionDate, int birthYear, String gender, String injuryType,
-			String injuryContent, String notes) {
+			String injuryContent, String notes, Date injuryDate, Date recoveryDate) {
 		this.no = no;
 		this.name = name;
 		this.type = type;
@@ -28,7 +30,10 @@ public class MarineLife {
 		this.injuryType = injuryType;
 		this.injuryContent = injuryContent;
 		this.notes = notes;
+		this.injuryDate = injuryDate;
+		this.recoveryDate = recoveryDate;
 	}
+
 
 	public int getNo() {
 		return no;
@@ -85,6 +90,21 @@ public class MarineLife {
 	public void setInjuryType(String injuryType) {
 		this.injuryType = injuryType;
 	}
+	public Date getInjuryDate() {
+		return injuryDate;
+	}
+	
+	public void setInjuryDate(Date injuryDate) {
+		this.injuryDate = injuryDate;
+	}
+	
+	public Date getRecoveryDate() {
+		return recoveryDate;
+	}
+	
+	public void setRecoveryDate(Date recoveryDate) {
+		this.recoveryDate = recoveryDate;
+	}
 
 	public String getInjuryContent() {
 		return injuryContent;
@@ -104,10 +124,13 @@ public class MarineLife {
 
 	@Override
 	public String toString() {
-		return "Person [no=" + no + ", name=" + name + ", type=" + type + ", admissionDate=" + admissionDate
+		return "MarineLife [no=" + no + ", name=" + name + ", type=" + type + ", admissionDate=" + admissionDate
 				+ ", birthYear=" + birthYear + ", gender=" + gender + ", injuryType=" + injuryType + ", injuryContent="
-				+ injuryContent + ", notes=" + notes + "]";
+				+ injuryContent + ", notes=" + notes + ", injuryDate=" + injuryDate + ", recoveryDate=" + recoveryDate
+				+ "]";
 	}
+
+	
 
 	
     

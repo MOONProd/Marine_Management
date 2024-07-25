@@ -72,6 +72,7 @@
                 injuryDetails.style.display = "none";
             }
         }
+        
     </script>
 </head>
 <body>

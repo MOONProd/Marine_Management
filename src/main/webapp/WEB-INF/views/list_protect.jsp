@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Animal List</title>
+<title>Protection List</title>
   <style type="text/css">
       body {
             font-family: Arial, sans-serif;
@@ -87,7 +87,7 @@
 <body>
 	<div class="section">
 
-  		<h3>Animal List</h3>
+  		<h3>Protection List</h3>
   		<hr>
   		<div class="search-container">
             <input type="text" id="searchInput" placeholder="Value">
@@ -95,35 +95,30 @@
         </div>
   <%-- 영역에 "list" key로 저장된 값이 있고 null이 아니라면
        영역에 "list" key로 저장된 값이 있고 List의 경우 size()가 1이상이라면   --%>
-  <c:if test="${ !empty list }">
+  <c:if test="${ !empty list_protect }">
 	  <table>
 	    <tr>
 	      <th>번호</th>
 	      <th>분류</th>
 	      <th>이름(어명)</th>
-	      <th>입사날짜</th>
-	      <th>특이사항 유무</th>
+	      <th>부상시기</th>
+	      <th>호전도</th>
 	    </tr>	
-	    <tbody id="animalTable">  
+	    <tbody id="protectTable">  
 	    <%-- 
 	     items="${배열명}"  ==> 배열의 수만큼 반복
 	     items="${list}"  ==> 영역에 "list" key로 저장된 값은 new ArrayList<Person>()
 	           
 	     var = "person"   ==> forEach를 통해 반복되면서 얻어오는 Person객체 한개를 저장하는 변수
 	     --%>
-	    <c:forEach items="${list}" var="person">
+	    <c:forEach items="${list_protect}" var="person">
 		    <tr>
-		      <td>${person.no }</td>
+		      <td>${person.no}</td>
 		      <%-- <td><a href="upform?no=4">나지수</a></td> --%>
 		      <td>${person.type}</td>
 		      <td><a href="upform?no=${person.no}">${person.name}</a></td>
-		      <td>${person.admissionDate}</td>
-		      <c:if test="${!empty person.notes}">
-		      	<td>O</td>
-		      </c:if>
-		      <c:if test="${empty person.notes}">
-		      	<td>X</td>
-		      </c:if>
+		      <td>${person.injuryDate}</td>
+		      <td>${person.recoveryDate}</td>
 		    </tr>
         </c:forEach>
         </tbody> 		    
@@ -134,14 +129,14 @@
      영역에 "list" key로 저장된 값이 있고 null이라면
      영역에 "list" key로 저장된 값이 있고 List의 경우 size()가 0이라면
    --%>
-   <c:if test="${empty list}">  
-      등록된 Person이 없습니다.
+   <c:if test="${empty list_protect}">  
+      등록된 Animal이 없습니다.
    </c:if>
   <br>
   <script>
         function searchTable() {
             const input = document.getElementById("searchInput").value.toLowerCase();
-            const table = document.getElementById("animalTable");
+            const table = document.getElementById("protectTable");
             const rows = table.getElementsByTagName("tr");
 
             for (let i = 0; i < rows.length; i++) {

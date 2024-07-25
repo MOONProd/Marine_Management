@@ -14,4 +14,6 @@ public interface PersonService {
 	
 	public MarineLife read(int no)throws SQLException;
 	public List<MarineLife> readAll()throws SQLException;
+    public List<MarineLife> readAllProtected() throws SQLException; // 부상 유형이 '유'인 데이터만 조회하는 메서드
+	
 }

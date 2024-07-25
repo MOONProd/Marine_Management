@@ -39,5 +39,10 @@ public class MarineLifeServiceImpl implements PersonService {
 	public List<MarineLife> readAll() throws SQLException {
 		return dao.selectAll();
 	}
+	
+	 @Override
+	    public List<MarineLife> readAllProtected() throws SQLException {
+	        return dao.selectProtected();
+	    }
 
 }
