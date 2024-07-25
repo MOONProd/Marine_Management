@@ -40,9 +40,9 @@ public class MarineLifeServiceImpl implements MarineLifeService {
 		return dao.selectAll();
 	}
 	
-	 @Override
-	    public List<MarineLife> readAllProtected() throws SQLException {
-	        return dao.selectProtected();
-	    }
+	@Override
+	public List<MarineLife> readAllProtected() throws SQLException {
+	    return dao.selectProtected();
+	}
 
 }

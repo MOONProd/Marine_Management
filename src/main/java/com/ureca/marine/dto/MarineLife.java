@@ -2,6 +2,7 @@ package com.ureca.marine.dto;
 
 import java.sql.Date;
 
+
 public class MarineLife {
 	private int no;
     private String name;

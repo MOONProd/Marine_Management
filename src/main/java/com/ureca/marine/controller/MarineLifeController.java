@@ -1,11 +1,14 @@
 package com.ureca.marine.controller;
 
+import java.util.Date;
 import java.sql.SQLException;
+import java.util.Calendar;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,14 +38,53 @@ public class MarineLifeController {
     }
 
     @PostMapping("/form")
-    public String register(MarineLife marine, Model model, HttpServletRequest request) { // DB입력
-        System.out.println(">>> POST form");
-        System.out.println("marine >>>" + marine);
+    public String register(MarineLife marine, BindingResult result, Model model, HttpServletRequest request) {
+        int currentYear = Calendar.getInstance().get(Calendar.YEAR);
+        Date today = new Date();
+        Date admissionDate = marine.getAdmissionDate();
+        Date injuryDate = marine.getInjuryDate();
+        Date recoveryDate = marine.getRecoveryDate();
+        
+        boolean hasError = false;
+        
+        if (marine.getBirthYear() > currentYear || marine.getBirthYear() < 1800) {
+            model.addAttribute("error", "올바른 년도를 입력해주세요.");
+            marine.setBirthYear(2024); // birthYear를 빈 값으로 설정
+            model.addAttribute("marine", marine);
+            hasError = true;
+        }
+
+        if (admissionDate != null && admissionDate.after(today)) {
+        	model.addAttribute("admissionDateError", "입사 날짜는 오늘 날짜를 포함하여 과거여야 합니다.");
+        	hasError = true;
+        }
+        
+        if (injuryDate != null && injuryDate.after(today)) {
+            model.addAttribute("injuryDateError", "부상 날짜는 오늘 날짜를 포함하여 과거여야 합니다.");
+            hasError = true;
+        }
+
+        if (recoveryDate != null && recoveryDate.before(today)) {
+            model.addAttribute("recoveryDateError", "복귀 날짜는 오늘 날짜를 포함하여 미래여야 합니다.");
+            hasError = true;
+        }
+
+        if (injuryDate != null && recoveryDate != null && recoveryDate.before(injuryDate)) {
+            model.addAttribute("dateError", "복귀 날짜는 부상 날짜 이후여야 합니다.");
+            hasError = true;
+        }
+        
+        if (hasError) {
+        	model.addAttribute("marine",marine);
+        	return "form";
+        }
 
         try {
-            service.add(marine); // 3.
+            service.add(marine);
         } catch (SQLException e) {
             e.printStackTrace();
+            model.addAttribute("error", "데이터베이스 에러 발생: " + e.getMessage());
+            return "form";
         }
 
         String injuryType = request.getParameter("injuryType");
