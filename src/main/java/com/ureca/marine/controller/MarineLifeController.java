@@ -93,6 +93,21 @@ public class MarineLifeController {
             hasError = true;
         }
         
+        if ("유".equals(marine.getInjuryType())) {
+            if (marine.getInjuryContent() == null || marine.getInjuryContent().isEmpty()) {
+                model.addAttribute("injuryContentError", "부상 내용을 입력해주세요.");
+                hasError = true;
+            }
+            if (injuryDate == null) {
+                model.addAttribute("injuryDateError", "부상 날짜를 입력해주세요.");
+                hasError = true;
+            }
+            if (recoveryDate == null) {
+                model.addAttribute("recoveryDateError", "복귀 날짜를 입력해주세요.");
+                hasError = true;
+            }
+        }
+        
         if (hasError) {
         	model.addAttribute("marine", marine);
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
@@ -173,6 +188,97 @@ public class MarineLifeController {
         return "upform";
     }
     
+    @PostMapping("/upform")
+    public String modify(@Validated @ModelAttribute("marine") MarineLife marine, BindingResult result, Model model, HttpServletRequest request) { // DB수정 요청
+        int currentYear = Calendar.getInstance().get(Calendar.YEAR);
+        Date today = new Date();
+        Date admissionDate = marine.getAdmissionDate();
+        Date injuryDate = marine.getInjuryDate();
+        Date recoveryDate = marine.getRecoveryDate();
+
+        boolean hasError = false;
+
+        if (marine.getBirthYear() > currentYear || marine.getBirthYear() < 1800) {
+            model.addAttribute("error", "올바른 년도를 입력해주세요.");
+            marine.setBirthYear(2024); // birthYear를 빈 값으로 설정
+            model.addAttribute("marine", marine);
+            hasError = true;
+        }
+
+        if (admissionDate != null && admissionDate.after(today)) {
+            model.addAttribute("admissionDateError", "입사 날짜는 오늘 날짜를 포함하여 과거여야 합니다.");
+            hasError = true;
+        }
+
+        if (injuryDate != null && injuryDate.after(today)) {
+            model.addAttribute("injuryDateError", "부상 날짜는 오늘 날짜를 포함하여 과거여야 합니다.");
+            hasError = true;
+        }
+
+        if (recoveryDate != null && recoveryDate.before(today)) {
+            model.addAttribute("recoveryDateError", "복귀 날짜는 오늘 날짜를 포함하여 미래여야 합니다.");
+            hasError = true;
+        }
+
+        if (injuryDate != null && recoveryDate != null && recoveryDate.before(injuryDate)) {
+            model.addAttribute("dateError", "복귀 날짜는 부상 날짜 이후여야 합니다.");
+            hasError = true;
+        }
+
+        if ("유".equals(marine.getInjuryType())) {
+            if (marine.getInjuryContent() == null || marine.getInjuryContent().isEmpty()) {
+                model.addAttribute("injuryContentError", "부상 내용을 입력해주세요.");
+                hasError = true;
+            }
+            if (injuryDate == null) {
+                model.addAttribute("injuryDateError", "부상 날짜를 입력해주세요.");
+                hasError = true;
+            }
+            if (recoveryDate == null) {
+                model.addAttribute("recoveryDateError", "복귀 날짜를 입력해주세요.");
+                hasError = true;
+            }
+        }
+
+        if (hasError) {
+            model.addAttribute("marine", marine);
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            model.addAttribute("admissionDateStr", marine.getAdmissionDate() != null ? sdf.format(marine.getAdmissionDate()) : "");
+            model.addAttribute("injuryDateStr", marine.getInjuryDate() != null ? sdf.format(marine.getInjuryDate()) : "");
+            model.addAttribute("recoveryDateStr", marine.getRecoveryDate() != null ? sdf.format(marine.getRecoveryDate()) : "");
+
+            return "upform";
+        }
+
+        if ("무".equals(marine.getInjuryType())) {
+            marine.setInjuryDate(null);
+            marine.setRecoveryDate(null);
+            marine.setInjuryContent(null);
+        }
+
+        try {
+            service.edit(marine);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            model.addAttribute("error", "데이터베이스 에러 발생: " + e.getMessage());
+            model.addAttribute("marine", marine);
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            model.addAttribute("admissionDateStr", marine.getAdmissionDate() != null ? sdf.format(marine.getAdmissionDate()) : "");
+            model.addAttribute("injuryDateStr", marine.getInjuryDate() != null ? sdf.format(marine.getInjuryDate()) : "");
+            model.addAttribute("recoveryDateStr", marine.getRecoveryDate() != null ? sdf.format(marine.getRecoveryDate()) : "");
+
+            return "upform";
+        }
+
+        String injuryType = request.getParameter("injuryType");
+        if ("유".equals(injuryType)) {
+            return "redirect:list_protect"; // 5.
+        } else {
+            return "redirect:list_all"; // 5.
+        } // 수정 결과를 list페이지로 확인
+    }
+
+    
     @GetMapping("/detail")
     public String detail(@RequestParam("no") int no, Model model) { // 수정폼 보이기
     	try {
@@ -198,21 +304,6 @@ public class MarineLifeController {
 //    	return "redirect:detail";
 //    }
 
-    @PostMapping("/upform")
-    public String modify(MarineLife marine, HttpServletRequest request) { // DB수정 요청
-        try {
-            service.edit(marine);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        
-        String injuryType = request.getParameter("injuryType");
-        if ("유".equals(injuryType)) {
-    		return "redirect:list_protect"; // 5.
-    	} else {
-    		return "redirect:list_all"; // 5.
-    	} // 수정 결과를 list페이지로 확인
-    }
 
     @GetMapping("/delete")
     public String remove(@RequestParam("no") int no, HttpServletRequest request) { // DB삭제 요청

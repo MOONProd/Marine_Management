@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="jakarta.tags.core"  prefix="c" %> 
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -120,10 +121,17 @@
             <div class="form-group">
                 <label for="admissionDate">입사 날짜</label>
                 <input type="date" id="admissionDate" name="admissionDate" value="${admissionDateStr}" required>
+                <c:if test="${not empty admissionDateError}">
+                    <div style="color: red;">${admissionDateError}</div>
+                </c:if>
             </div>
             <div class="form-group">
-                <label for="birthYear">탄생 년도</label>
-                <input type="text" id="birthYear" name="birthYear" value="${marine.birthYear}" required>
+                <label for="birthYear">태어난 해</label>
+                <input type="text" id="birthYear" name="birthYear" value="${marine.birthYear}" maxlength="4"
+			           class="${not empty error ? 'error-input' : ''}" required>
+                <c:if test="${not empty error}">
+                    <div style="color: red;">${error}</div>
+                </c:if>
             </div>
             <div class="form-group">
                 <label for="injuryType">부상 유무</label>
@@ -138,11 +146,20 @@
             </div>
             <div class="form-group" id="injuryDetails" style="display: none;">
                 <label for="injuryDetails">부상 내용</label>
-                <textarea id="injuryContent" name="injuryContent" rows="4">${marine.injuryContent}</textarea>
+                <textarea id="injuryContent" name="injuryContent" rows="4" class="${not empty injuryContentError ? 'error-input' : ''}">${marine.injuryContent}</textarea>
+                <c:if test="${not empty injuryContentError}">
+                    <div style="color: red;">${injuryContentError}</div>
+                </c:if>
                 <label for="injuryDate">부상 날짜</label>
-                <input type="date" id="injuryDate" name="injuryDate" value="${injuryDateStr}">
+                <input type="date" id="injuryDate" name="injuryDate" value="${injuryDateStr}" class="${not empty injuryDateError ? 'error-input' : ''}">
+                <c:if test="${not empty injuryDateError}">
+                    <div style="color: red;">${injuryDateError}</div>
+                </c:if>
                 <label for="recoveryDate">복귀 날짜</label>
-                <input type="date" id="recoveryDate" name="recoveryDate" value="${recoveryDateStr}">
+                <input type="date" id="recoveryDate" name="recoveryDate" value="${recoveryDateStr}" class="${not empty recoveryDateError ? 'error-input' : ''}">
+                <c:if test="${not empty recoveryDateError}">
+                    <div style="color: red;">${recoveryDateError}</div>
+                </c:if>
             </div>
             <div class="form-actions">
                 <button type="submit">수정 등록</button>

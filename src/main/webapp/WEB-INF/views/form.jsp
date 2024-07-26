@@ -143,16 +143,19 @@
             </div>
             <div class="form-group" id="injuryDetails" style="display: none;">
 			    <label for="injuryContent">부상 내용</label>
-			    <textarea id="injuryContent" name="injuryContent" rows="4">${marine.injuryContent}</textarea>
+			    <textarea id="injuryContent" name="injuryContent" rows="4" class="${not empty injuryContentError ? 'error-input' : ''}">${marine.injuryContent}</textarea>
+			    <c:if test="${not empty injuryContentError}">
+                    <div style="color: red;">${injuryContentError}</div>
+                </c:if>
 			    
 			    <label for="injuryDate">부상 날짜</label>
-			    <input type="date" id="injuryDate" name="injuryDate" value="${injuryDateStr}">
+			    <input type="date" id="injuryDate" name="injuryDate" value="${injuryDateStr}" class="${not empty injuryDateError ? 'error-input' : ''}">
 			    <c:if test="${not empty injuryDateError}">
 			        <div style="color: red;">${injuryDateError}</div>
 			    </c:if>
 			    
 			    <label for="recoveryDate">복귀 날짜</label>
-			    <input type="date" id="recoveryDate" name="recoveryDate" value="${recoveryDateStr}">
+			    <input type="date" id="recoveryDate" name="recoveryDate" value="${recoveryDateStr}" class="${not empty recoveryDateError ? 'error-input' : ''}">
 			    <c:if test="${not empty recoveryDateError}">
 			        <div style="color: red;">${recoveryDateError}</div>
 			    </c:if>
