@@ -1,6 +1,6 @@
 package com.ureca.marine.dto;
 
-import java.sql.Date;
+import java.util.Date;
 
 
 public class MarineLife {
@@ -122,6 +122,33 @@ public class MarineLife {
 	public void setNotes(String notes) {
 		this.notes = notes;
 	}
+	
+	//
+	
+	
+//	public void setAdmissionDateFromSqlDate(java.sql.Date admissionDate) {
+//        this.admissionDate = new java.util.Date(admissionDate.getTime());
+//    }
+//
+//    public void setInjuryDateFromSqlDate(java.sql.Date injuryDate) {
+//        this.injuryDate = injuryDate != null ? new java.util.Date(injuryDate.getTime()) : null;
+//    }
+//
+//    public void setRecoveryDateFromSqlDate(java.sql.Date recoveryDate) {
+//        this.recoveryDate = recoveryDate != null ? new java.util.Date(recoveryDate.getTime()) : null;
+//    }
+//
+//    public java.sql.Date getAdmissionDateAsSqlDate() {
+//        return new java.sql.Date(this.admissionDate.getTime());
+//    }
+//
+//    public java.sql.Date getInjuryDateAsSqlDate() {
+//        return this.injuryDate != null ? new java.sql.Date(this.injuryDate.getTime()) : null;
+//    }
+//
+//    public java.sql.Date getRecoveryDateAsSqlDate() {
+//        return this.recoveryDate != null ? new java.sql.Date(this.recoveryDate.getTime()) : null;
+//    }
 
 	@Override
 	public String toString() {

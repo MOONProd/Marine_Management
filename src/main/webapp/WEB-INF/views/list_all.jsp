@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="jakarta.tags.core"  prefix="c" %>    
+<%@ taglib uri="jakarta.tags.core"  prefix="c" %>   
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -117,7 +118,7 @@
 		      <%-- <td><a href="upform?no=4">나지수</a></td> --%>
 		      <td>${marine.type}</td>
 		      <td><a href="detail?no=${marine.no}">${marine.name}</a></td>
-		      <td>${marine.admissionDate}</td>
+		      <td><fmt:formatDate value="${marine.admissionDate}" pattern="yyyy-MM-dd" /></td>
 		      <c:if test="${!empty marine.notes}">
 		      	<td>O</td>
 		      </c:if>

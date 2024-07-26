@@ -2,14 +2,20 @@ package com.ureca.marine.controller;
 
 import java.util.Date;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -25,6 +31,13 @@ public class MarineLifeController {
     
     @Autowired
     MarineLifeService service; // service = null; 기본값
+    
+    @InitBinder
+    public void initBinder(WebDataBinder binder) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        dateFormat.setLenient(false);
+        binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));
+    }
 
     @GetMapping("/")
     public String start() {
@@ -32,13 +45,19 @@ public class MarineLifeController {
     }
 
     @GetMapping("/form")
-    public String form() { // 입력폼 보이기
+    public String form(Model model) { // 입력폼 보이기
         System.out.println(">>> GET form");
+        MarineLife marine = new MarineLife();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        model.addAttribute("marine", marine);
+        model.addAttribute("admissionDateStr", marine.getAdmissionDate() != null ? sdf.format(marine.getAdmissionDate()) : "");
+        model.addAttribute("injuryDateStr", marine.getInjuryDate() != null ? sdf.format(marine.getInjuryDate()) : "");
+        model.addAttribute("recoveryDateStr", marine.getRecoveryDate() != null ? sdf.format(marine.getRecoveryDate()) : "");
         return "form"; // "/WEB-INF/views/" + "form" + ".jsp" ==> 5. forward이동    
     }
 
     @PostMapping("/form")
-    public String register(MarineLife marine, BindingResult result, Model model, HttpServletRequest request) {
+    public String register(@Validated @ModelAttribute("marine") MarineLife marine, BindingResult result, Model model, HttpServletRequest request) {
         int currentYear = Calendar.getInstance().get(Calendar.YEAR);
         Date today = new Date();
         Date admissionDate = marine.getAdmissionDate();
@@ -75,24 +94,46 @@ public class MarineLifeController {
         }
         
         if (hasError) {
-        	model.addAttribute("marine",marine);
+        	model.addAttribute("marine", marine);
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            model.addAttribute("admissionDateStr", marine.getAdmissionDate() != null ? sdf.format(marine.getAdmissionDate()) : "");
+            model.addAttribute("injuryDateStr", marine.getInjuryDate() != null ? sdf.format(marine.getInjuryDate()) : "");
+            model.addAttribute("recoveryDateStr", marine.getRecoveryDate() != null ? sdf.format(marine.getRecoveryDate()) : "");
+        	
         	return "form";
+        }
+        
+        if ("무".equals(marine.getInjuryType())) {
+            marine.setInjuryDate(null);
+            marine.setRecoveryDate(null);
+            marine.setInjuryContent(null);
         }
 
         try {
-            service.add(marine);
+        	if(marine.getNo()==0) {
+        		service.add(marine);        		
+        	}
+        	else {
+        		service.edit(marine);
+        	}
+        	String injuryType = request.getParameter("injuryType");
+        	if ("유".equals(injuryType)) {
+        		return "redirect:list_protect"; // 5.
+        	} else {
+        		return "redirect:list_all"; // 5.
+        	}
         } catch (SQLException e) {
             e.printStackTrace();
             model.addAttribute("error", "데이터베이스 에러 발생: " + e.getMessage());
+            model.addAttribute("marine", marine);
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            model.addAttribute("admissionDateStr", marine.getAdmissionDate() != null ? sdf.format(marine.getAdmissionDate()) : "");
+            model.addAttribute("injuryDateStr", marine.getInjuryDate() != null ? sdf.format(marine.getInjuryDate()) : "");
+            model.addAttribute("recoveryDateStr", marine.getRecoveryDate() != null ? sdf.format(marine.getRecoveryDate()) : "");
+            
             return "form";
         }
 
-        String injuryType = request.getParameter("injuryType");
-        if ("유".equals(injuryType)) {
-            return "redirect:list_protect"; // 5.
-        } else {
-            return "redirect:list_all"; // 5.
-        }
     }
 
     @GetMapping("/list_all")
@@ -120,7 +161,12 @@ public class MarineLifeController {
     @GetMapping("/upform")
     public String upform(@RequestParam("no") int no, Model model) { // 수정폼 보이기
         try {
-            model.addAttribute("marine", service.read(no));
+        	MarineLife marine = service.read(no);
+            model.addAttribute("marine", marine);
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            model.addAttribute("admissionDateStr", marine.getAdmissionDate() != null ? sdf.format(marine.getAdmissionDate()) : "");
+            model.addAttribute("injuryDateStr", marine.getInjuryDate() != null ? sdf.format(marine.getInjuryDate()) : "");
+            model.addAttribute("recoveryDateStr", marine.getRecoveryDate() != null ? sdf.format(marine.getRecoveryDate()) : "");
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -130,30 +176,56 @@ public class MarineLifeController {
     @GetMapping("/detail")
     public String detail(@RequestParam("no") int no, Model model) { // 수정폼 보이기
     	try {
-    		model.addAttribute("marine", service.read(no));
+    		MarineLife marine = service.read(no);
+            model.addAttribute("marine", marine);
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            model.addAttribute("admissionDateStr", marine.getAdmissionDate() != null ? sdf.format(marine.getAdmissionDate()) : "");
+            model.addAttribute("injuryDateStr", marine.getInjuryDate() != null ? sdf.format(marine.getInjuryDate()) : "");
+            model.addAttribute("recoveryDateStr", marine.getRecoveryDate() != null ? sdf.format(marine.getRecoveryDate()) : "");
     	} catch (SQLException e) {
     		e.printStackTrace();
     	}
     	return "detail";
     }
+    
+//    @PostMapping("/detail")
+//    public String edit(@RequestParam("no") int no, Model model) { // 수정폼 보이기
+//    	try {
+//    		model.addAttribute("marine", service.read(no));
+//    	} catch (SQLException e) {
+//    		e.printStackTrace();
+//    	}
+//    	return "redirect:detail";
+//    }
 
     @PostMapping("/upform")
-    public String modify(MarineLife marine) { // DB수정 요청
+    public String modify(MarineLife marine, HttpServletRequest request) { // DB수정 요청
         try {
             service.edit(marine);
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return "redirect:list"; // 수정 결과를 list페이지로 확인
+        
+        String injuryType = request.getParameter("injuryType");
+        if ("유".equals(injuryType)) {
+    		return "redirect:list_protect"; // 5.
+    	} else {
+    		return "redirect:list_all"; // 5.
+    	} // 수정 결과를 list페이지로 확인
     }
 
     @GetMapping("/delete")
-    public String remove(@RequestParam("no") int no) { // DB삭제 요청
+    public String remove(@RequestParam("no") int no, HttpServletRequest request) { // DB삭제 요청
         try {
             service.remove(no);
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return "redirect:list"; // 삭제 결과를 list페이지로 확인
+        String injuryType = request.getParameter("injuryType");
+        if ("유".equals(injuryType)) {
+    		return "redirect:list_protect"; // 5.
+    	} else {
+    		return "redirect:list_all"; // 5.
+    	} // 삭제 결과를 list페이지로 확인
     }
 }

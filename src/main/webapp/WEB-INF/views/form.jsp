@@ -94,9 +94,9 @@
 <body>
     <div class="section">
         <h2>생물 등록</h2>
-        <form method="post">
+        <form action="/form" method="post">
             <div class="form-group">
-                <label for="animalName">생물 이름 (어명)</label>
+                <label for="animalName">생물 이름 (학명)</label>
                 <input type="text" id="animalName" name="name" value="${marine.name}" required>
             </div>
             <div class="form-group">
@@ -117,7 +117,7 @@
             </div>
             <div class="form-group">
                 <label for="admissionDate">입사 날짜</label>
-                <input type="date" id="admissionDate" name="admissionDate" value="${marine.admissionDate}" required>
+                <input type="date" id="admissionDate" name="admissionDate" value="${admissionDateStr}" required>
                 <c:if test="${not empty admissionDateError}">
 			        <div style="color: red;">${admissionDateError}</div>
 			    </c:if>
@@ -146,13 +146,13 @@
 			    <textarea id="injuryContent" name="injuryContent" rows="4">${marine.injuryContent}</textarea>
 			    
 			    <label for="injuryDate">부상 날짜</label>
-			    <input type="date" id="injuryDate" name="injuryDate" value="${marine.injuryDate}">
+			    <input type="date" id="injuryDate" name="injuryDate" value="${injuryDateStr}">
 			    <c:if test="${not empty injuryDateError}">
 			        <div style="color: red;">${injuryDateError}</div>
 			    </c:if>
 			    
 			    <label for="recoveryDate">복귀 날짜</label>
-			    <input type="date" id="recoveryDate" name="recoveryDate" value="${marine.recoveryDate}">
+			    <input type="date" id="recoveryDate" name="recoveryDate" value="${recoveryDateStr}">
 			    <c:if test="${not empty recoveryDateError}">
 			        <div style="color: red;">${recoveryDateError}</div>
 			    </c:if>
