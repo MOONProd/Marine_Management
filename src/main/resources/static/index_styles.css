@@ -1,0 +1,253 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #001f3f; /* 어두운 심해 색 */
+    color: #f0f0f0; /* 밝은 폰트 색상 */
+}
+
+header {
+    background: #003366; /* 어두운 심해 색 */
+    padding: 10px 0;
+    border-bottom: 1px solid #004080; /* 어두운 색상 */
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+header .logo {
+    font-size: 24px;
+    font-weight: bold;
+    
+}
+header div a {
+    text-decoration: none;
+    color: #f0f0f0; /* 밝은 폰트 색상 */
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 20px;
+}
+
+
+nav ul li a {
+    text-decoration: none;
+    color: #f0f0f0; /* 밝은 폰트 색상 */
+    position: relative;
+    overflow: hidden; /* 넘치는 부분을 숨기기 위해 추가 */
+    outline: none; /* 포커스 아웃라인 제거 */
+}
+
+nav ul li a:after {
+    content: '';
+    width: 30%;
+    height: 100%;
+    position: absolute;
+    left: -30%; /* 그라데이션이 텍스트 왼쪽에서 시작 */
+    top: 0;
+    background-image: linear-gradient(135deg, rgba(255, 255, 255, 0), #003366, rgba(255, 255, 255, 0));
+}
+
+nav ul li a:hover:after {
+    transition: all .4s ease-out;
+    left: 100%; /* 호버 시 그라디언트가 텍스트를 지나 오른쪽으로 이동 */
+}
+
+nav ul li a:focus {
+    outline: none; /* 포커스 아웃라인 제거 */
+    background-color: transparent; /* 포커스 시 배경색 변경 */
+}
+
+.swiper-container {
+    width: 100%;
+    height: 500px;
+    overflow: hidden;
+}
+.swiper-slide {
+	position: relative;
+	overflow: hidden;
+}
+        
+.slide-text {
+	position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
+}
+
+.swiper-button-next, .swiper-button-prev {
+	display: none;
+}
+
+.swiper-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hero {
+	position: relative;
+	text-align: center;
+	
+}
+.hero-text {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
+    z-index: 10;
+}
+
+.hero-text h1 {
+    font-size: 48px;
+    margin: 0;
+}
+
+.hero-text p {
+    font-size: 18px;
+}
+
+.hero-text button {
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.hero-text .sign-up {
+    background-color: #007BFF;
+    color: white;
+}
+
+.hero-text .learn-more {
+    background-color: #6c757d;
+    color: white;
+}
+
+.what-we-do {
+    text-align: center;
+    padding: 40px 20px;
+    background: #001f3f; /* 어두운 심해 색 */
+    color: #f0f0f0; /* 밝은 폰트 색상 */
+}
+
+.what-we-do h2 {
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+.what-we-do p {
+    font-size: 16px;
+    color: #666;
+}
+
+.boxes {
+    display: flex;
+    justify-content: space-between;
+}
+
+.box {
+    background: #f0f0f0;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    text-align: center;
+    visibility: hidden;
+    flex: 1;
+    margin: 0 10px;
+    height: 280px; /* 두 박스의 높이를 같게 */
+}
+
+.box.new-friends {
+    background-color: #f0f0f0; /* New Friends 박스의 색상 */
+    color: #000; /* 텍스트 색상 */
+    height: 80px; /* 원하는 높이 */
+    margin-bottom: 20px; /* 하단 여백 */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.box.new-friends h3 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.box.need-protect {
+    background-color: #f0f0f0; /* Need to Protect 박스의 색상 */
+    color: #000; /* 텍스트 색상 */
+}
+
+.box.all-friends {
+    background-color: #FFD600; /* All Friends 박스의 색상 */
+    color: #000; /* 텍스트 색상 */
+}
+
+.box.new-friends button {
+    margin: 0;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    background-color: #007BFF;
+    color: white;
+    cursor: pointer;
+}
+
+.box.new-friends p {
+    display: none;
+}
+
+.box p {
+    font-size: 14px;
+    color: #666;
+}
+
+.box button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    background-color: #007BFF;
+    color: white;
+    cursor: pointer;
+}
+
+.box button:hover {
+    background-color: #0056b3;
+}
+
+@keyframes slide-up {
+    0% {
+        transform: translateY(100px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.box.visible {
+    animation: slide-up 1s forwards;
+    visibility: visible;
+    
+}

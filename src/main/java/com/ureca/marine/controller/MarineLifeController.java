@@ -53,7 +53,7 @@ public class MarineLifeController {
         model.addAttribute("admissionDateStr", marine.getAdmissionDate() != null ? sdf.format(marine.getAdmissionDate()) : "");
         model.addAttribute("injuryDateStr", marine.getInjuryDate() != null ? sdf.format(marine.getInjuryDate()) : "");
         model.addAttribute("recoveryDateStr", marine.getRecoveryDate() != null ? sdf.format(marine.getRecoveryDate()) : "");
-        return "form"; // "/WEB-INF/views/" + "form" + ".jsp" ==> 5. forward이동    
+        return "form_card"; // "/WEB-INF/views/" + "form" + ".jsp" ==> 5. forward이동    
     }
 
     @PostMapping("/form")

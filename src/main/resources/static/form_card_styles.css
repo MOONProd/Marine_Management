@@ -1,0 +1,243 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #003366; /* 어두운 심해 색 */
+    color: #f0f0f0; /* 밝은 폰트 색상 */
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background: #003366; /* 어두운 심해 색 */
+    padding: 10px 0;
+    border-bottom: 1px solid #004080; /* 어두운 색상 */
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+header .logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+header div a {
+    text-decoration: none;
+    color: #f0f0f0; /* 밝은 폰트 색상 */
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #f0f0f0; /* 밝은 폰트 색상 */
+    position: relative;
+    overflow: hidden; /* 넘치는 부분을 숨기기 위해 추가 */
+    outline: none; /* 포커스 아웃라인 제거 */
+}
+
+nav ul li a:after {
+    content: '';
+    width: 30%;
+    height: 100%;
+    position: absolute;
+    left: -30%; /* 그라데이션이 텍스트 왼쪽에서 시작 */
+    top: 0;
+    background-image: linear-gradient(135deg, rgba(255, 255, 255, 0), #003366, rgba(255, 255, 255, 0));
+}
+
+nav ul li a:hover:after {
+    transition: all .4s ease-out;
+    left: 100%; /* 호버 시 그라디언트가 텍스트를 지나 오른쪽으로 이동 */
+}
+
+nav ul li a:focus {
+    outline: none; /* 포커스 아웃라인 제거 */
+    background-color: transparent; /* 포커스 시 배경색 변경 */
+}
+
+.content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+    padding-top: 70px; /* 헤더 높이만큼 패딩 추가 */
+}
+
+.section {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    width: 100%;
+    margin: 20px auto;
+    overflow: auto; /* 카드 길이가 길어질 때 스크롤 가능하도록 설정 */
+   /*  max-height: calc(100vh - 90px); */ /* 헤더와 여백을 뺀 최대 높이 설정 */
+}
+
+.section h2 {
+	text-align: center;
+    color: #003366; /* 제목 색상 */
+    margin-top: 0;
+}
+
+.form-card {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group {
+	display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #003366; /* 라벨 색상 */
+}
+
+.icon-label {
+    position: absolute;
+    left: 10px;
+    color: #003366;
+}
+
+.notes-icon-label {
+	position: absolute;
+    left: 10px;
+    transform: translateY(-115%);
+    color: #003366;
+}
+
+.injury-icon-label {
+	position: absolute;
+    left: 10px;
+    transform: translateY(60%);
+    color: #003366;
+}
+
+.input-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 100%;
+}
+
+input[type="text"], input[type="date"], select, textarea {
+    width: 100%;
+    padding: 10px 10px 10px 40px;
+    margin-bottom: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;   
+}
+
+textarea {
+    resize: vertical; /* 텍스트 영역 크기 조정 허용 (세로) */
+}
+
+.radio-wrapper-20 {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 0.5rem;
+    justify-content: center;
+    margin-left: 40px; /* 아이콘 위치와 맞추기 위해 추가 */
+}
+
+.radio-wrapper-20 input[type="radio"]:focus {
+    outline: 0;
+    border-color: #2260ff;
+    box-shadow: 0 0 0 4px #b5c9fc;
+}
+
+.radio-wrapper-20 input[type="radio"] {
+    clip: rect(0 0 0 0);
+    clip-path: inset(100%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+}
+
+.radio-wrapper-20 input[type="radio"]:checked + span {
+    box-shadow: 0 0 0 0.0625em #0043ed;
+    background-color: #dee7ff;
+    z-index: 1;
+    color: #0043ed;
+}
+
+.radio-wrapper-20 label span {
+    display: block;
+    cursor: pointer;
+    background-color: #fff;
+    padding: 0.375em .75em;
+    position: relative;
+    margin-left: .0625em;
+    box-shadow: 0 0 0 0.0625em #b5bfd9;
+    letter-spacing: .05em;
+    color: #3e4963;
+    text-align: center;
+    transition: background-color .5s ease;
+}
+
+.radio-wrapper-20 label:first-child span {
+    border-radius: .375em 0 0 .375em;
+}
+
+.radio-wrapper-20 label:last-child span {
+    border-radius: 0 .375em .375em 0;
+} 
+
+.form-actions {
+    text-align: center;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #007BFF;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.error-input {
+    border: 2px solid red; /* 오류 입력에 대한 스타일 */
+}
+
+.error-message {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+}

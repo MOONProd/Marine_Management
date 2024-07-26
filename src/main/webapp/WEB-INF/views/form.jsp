@@ -5,67 +5,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/form_styles.css">
     <title>생물 등록</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-            background-color: #f0f0f0;
-        }
-        .section {
-            background-color: #ffffff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-            margin-bottom: 20px;
-        }
-        .section h2 {
-            margin-top: 0;
-        }
-        form {
-            display: flex;
-            flex-wrap: wrap;
-        }
-        label {
-            display: block;
-            margin-bottom: 5px;
-        }
-        input[type="text"], input[type="date"], select, textarea {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 20px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            box-sizing: border-box;
-        }
-        .form-group {
-            flex: 1 1 45%;
-            margin-right: 20px;
-        }
-        .form-group:last-child {
-            margin-right: 0;
-        }
-        .form-actions {
-            flex-basis: 100%;
-            text-align: center;
-        }
-        button {
-            padding: 10px 20px;
-            font-size: 16px;
-            color: #fff;
-            background-color: #007BFF;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #0056b3;
-        }
-        .error-input {
-        	border: 2px solid red; /* 오류 입력에 대한 스타일 */
-    	}
-    </style>
+    
     <script>
 	    function toggleInjuryDetails() {
 	        var injuryType = document.getElementById("injuryType").value;
@@ -92,6 +34,18 @@
 	</script>
 </head>
 <body>
+    <header>
+        <div class="container">
+            <div class="logo"><a href="/">VELOCITY</a></div>
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/form">Register</a></li>
+                    <li><a href="/list_protect">Protect</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
     <div class="section">
         <h2>생물 등록</h2>
         <form action="/form" method="post">

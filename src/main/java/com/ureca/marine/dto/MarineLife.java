@@ -8,7 +8,7 @@ public class MarineLife {
     private String name;
     private String type;
     private Date admissionDate;
-    private int birthYear;
+    private Integer birthYear;
     private String gender;
     private String injuryType;
     private String injuryContent;
@@ -20,7 +20,7 @@ public class MarineLife {
 		// TODO Auto-generated constructor stub
 	}
 
-	public MarineLife(int no, String name, String type, Date admissionDate, int birthYear, String gender, String injuryType,
+	public MarineLife(int no, String name, String type, Date admissionDate, Integer birthYear, String gender, String injuryType,
 			String injuryContent, String notes, Date injuryDate, Date recoveryDate) {
 		this.no = no;
 		this.name = name;
@@ -68,11 +68,11 @@ public class MarineLife {
 		this.admissionDate = admissionDate;
 	}
 
-	public int getBirthYear() {
+	public Integer getBirthYear() {
 		return birthYear;
 	}
 
-	public void setBirthYear(int birthYear) {
+	public void setBirthYear(Integer birthYear) {
 		this.birthYear = birthYear;
 	}
 
