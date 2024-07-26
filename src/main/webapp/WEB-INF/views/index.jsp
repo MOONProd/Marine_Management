@@ -12,7 +12,7 @@
 <body>
     <header>
         <div class="container">
-            <div class="logo"><a href="/">VELOCITY</a></div>
+            <div class="logo"><a href="/">MOONPOOL</a></div>
             <nav>
                 <ul>
                     <li><a href="/">Home</a></li>
