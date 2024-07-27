@@ -110,8 +110,9 @@ nav ul li a:focus {
 
 .form-group {
 	display: flex;
-    align-items: center;
-    margin-bottom: 20px;
+    flex-direction: column; /* 요소를 수직으로 배치 */
+    align-items: flex-start; /* 요소를 왼쪽 정렬 */
+    margin-bottom: 5px;
     position: relative;
 }
 
@@ -124,13 +125,7 @@ label {
 .icon-label {
     position: absolute;
     left: 10px;
-    color: #003366;
-}
-
-.notes-icon-label {
-	position: absolute;
-    left: 10px;
-    transform: translateY(-115%);
+    transform: translateY(50%);
     color: #003366;
 }
 
@@ -331,5 +326,23 @@ textarea {
 .error-message {
     color: red;
     font-size: 12px;
-    margin-top: 5px;
+    margin-top: 2px;
+    align-self: flex-start; /* 오류 메시지를 왼쪽으로 정렬 */
+    margin-left: 40px; /* 아이콘과 텍스트의 위치와 맞추기 위해 추가 */
+}
+
+.invalid input,
+.invalid select,
+.invalid textarea {
+    border-color: red;
+    background-color: rgba(255, 0, 0, 0.1);
+    animation: shake 0.3s;
+}
+
+@keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    75% { transform: translateX(-5px); }
+    100% { transform: translateX(0); }
 }

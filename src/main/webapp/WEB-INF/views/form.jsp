@@ -81,14 +81,14 @@
                             </label>
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group ${not empty admissionDateError ? 'invalid' : ''}">
                         <label for="admissionDate" class="icon-label"><i class="fas fa-calendar-alt"></i></label>
                         <input type="date" id="admissionDate" name="admissionDate" value="${admissionDateStr}" required>
                         <c:if test="${not empty admissionDateError}">
                             <div class="error-message">${admissionDateError}</div>
                         </c:if>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group ${not empty error ? 'invalid' : ''}">
 					  <label for="birthYear" class="icon-label"><i class="fas fa-birthday-cake"></i></label>
 					  <input type="text" id="birthYear" name="birthYear" 
 					         value="${marine.birthYear != null ? marine.birthYear : ''}" 
@@ -99,7 +99,7 @@
 					  </c:if>
 					</div>
 
-                    <div class="form-group">
+                    <div class="form-group ${not empty injuryContentError ? 'invalid' : ''}">
                         <label for="injuryType" class="icon-label"><i class="fas fa-band-aid"></i></label>
                         <select id="injuryType" name="injuryType" onchange="toggleInjuryDetails()" required>
                             <option value="" disabled selected>부상 유무</option>
@@ -108,27 +108,33 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="notes" class="notes-icon-label"><i class="fas fa-sticky-note"></i></label>
+                        <label for="notes" class="icon-label"><i class="fas fa-sticky-note"></i></label>
                         <textarea id="notes" name="notes" rows="4" placeholder="특이 사항">${marine.notes}</textarea>
                     </div>
-                    <div class="form-group" id="injuryDetails" style="display: none;">
+                    <div class="form-group ${not empty injuryContentError ? 'invalid' : ''}" id="injuryDetails" style="display: none;">
                         <label for="injuryContent" class="injury-icon-label"><i class="fas fa-file-medical"></i></label>
                         <textarea id="injuryContent" name="injuryContent" rows="4" class="${not empty injuryContentError ? 'error-input' : ''}" placeholder="부상 내용">${marine.injuryContent}</textarea>
                         <c:if test="${not empty injuryContentError}">
                             <div class="error-message">${injuryContentError}</div>
                         </c:if>
                         
-                        <label for="injuryDate" class="injury-icon-label"><i class="fas fa-calendar-day"></i></label>
-                        <input type="date" id="injuryDate" name="injuryDate" value="${injuryDateStr}" class="${not empty injuryDateError ? 'error-input' : ''}">
-                        <c:if test="${not empty injuryDateError}">
-                            <div class="error-message">${injuryDateError}</div>
-                        </c:if>
-                        
-                        <label for="recoveryDate" class="injury-icon-label"><i class="fas fa-calendar-check"></i></label>
-                        <input type="date" id="recoveryDate" name="recoveryDate" value="${recoveryDateStr}" class="${not empty recoveryDateError ? 'error-input' : ''}">
-                        <c:if test="${not empty recoveryDateError}">
-                            <div class="error-message">${recoveryDateError}</div>
-                        </c:if>
+                         
+						    <div class="form-group ${not empty injuryDateError ? 'invalid' : ''}">
+						        <label for="injuryDate" class="injury-icon-label"><i class="fas fa-calendar-day"></i></label>
+						        <input type="date" id="injuryDate" name="injuryDate" value="${injuryDateStr}" class="${not empty injuryDateError ? 'error-input' : ''}">
+						        <c:if test="${not empty injuryDateError}">
+						            <div class="error-message">${injuryDateError}</div>
+						        </c:if>
+						    </div>
+						
+						    <div class="form-group ${not empty recoveryDateError ? 'invalid' : ''}">
+						        <label for="recoveryDate" class="injury-icon-label"><i class="fas fa-calendar-check"></i></label>
+						        <input type="date" id="recoveryDate" name="recoveryDate" value="${recoveryDateStr}" class="${not empty recoveryDateError ? 'error-input' : ''}">
+						        <c:if test="${not empty recoveryDateError}">
+						            <div class="error-message">${recoveryDateError}</div>
+						        </c:if>
+						    </div>
+						</div>
                         
                         <c:if test="${not empty dateError}">
                             <div class="error-message">${dateError}</div>
