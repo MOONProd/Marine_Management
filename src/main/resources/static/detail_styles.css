@@ -1,0 +1,234 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #003366;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background: #003366;
+    padding: 10px 0;
+    border-bottom: 1px solid #004080;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+header .logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+header div a {
+    text-decoration: none;
+    color: #f0f0f0;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #f0f0f0;
+    position: relative;
+    overflow: hidden;
+    outline: none;
+}
+
+nav ul li a:after {
+    content: '';
+    width: 30%;
+    height: 100%;
+    position: absolute;
+    left: -30%;
+    top: 0;
+    background-image: linear-gradient(135deg, rgba(255, 255, 255, 0),
+        #003366, rgba(255, 255, 255, 0));
+}
+
+nav ul li a:hover:after {
+    transition: all .4s ease-out;
+    left: 100%;
+}
+
+nav ul li a:focus {
+    outline: none;
+    background-color: transparent;
+}
+
+.profile-card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    margin: 80px auto;
+    width: 80%;
+    max-width: 500px;
+    text-align: center;
+}
+
+.profile-icon {
+    font-size: 60px;
+    color: #003366;
+    margin-bottom: 10px;
+}
+
+.profile-card h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.profile-card p {
+    font-size: 18px;
+    margin: 10px 0;
+    color: #333;
+}
+
+.profile-card i {
+    margin-right: 10px;
+    color: #003366;
+}
+
+.profile-info {
+    margin-top: 20px;
+    text-align: left;
+}
+
+.form-actions {
+    text-align: center;
+}
+
+.form-actions button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    background: #fff;
+    color: #37474f;
+    transition: color 0.3s;
+    z-index: 1;
+    outline: 1px solid #747474; /* 기본 outline 설정 */   
+}
+
+.button--aylen.button--inverted {
+    background: none;
+    color: #fff;
+}
+
+.form-actions button::before,
+.form-actions button::after {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    bottom: 100%;
+    left: 0;
+    z-index: -1;
+    transition: transform 0.3s;
+    transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1);
+}
+
+.form-actions button::before {
+    background: #7986cb;
+    .form-actions button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    background: #f6f6f6;
+    color: #37474f;
+    transition: color 0.3s;
+}
+
+.button--aylen.button--inverted {
+    background: none;
+    color: #fff;
+}
+
+.form-actions button::before,
+.form-actions button::after {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    bottom: 100%;
+    left: 0;
+    z-index: -1;
+    transition: transform 0.3s;
+    transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1);
+}
+
+.form-actions button::before {
+    background: #7986cb;
+    transition-delay: 0.175s; /* 이 줄 추가 */
+}
+
+.form-actions button::after {
+    background: #3f51b5;
+}
+
+.form-actions button:hover {
+    color: #fff;
+}
+
+.form-actions button:hover::before,
+.form-actions button:hover::after {
+    transform: translate3d(0, 100%, 0);
+}
+
+.form-actions button:hover::after {
+    transition-delay: 0.175s; /* 이 줄 추가 */
+}
+}
+
+.form-actions button::after {
+    background: #3f51b5;
+}
+
+.form-actions button:hover {
+    color: #fff;
+}
+
+.form-actions button:hover::before,
+.form-actions button:hover::after {
+    transform: translate3d(0, 100%, 0);
+}
+
+.form-actions button:hover::after {
+    transition-delay: 0.175s;
+}
+
+@media (max-width: 600px) {
+    .profile-card {
+        width: 90%;
+    }
+
+    .profile-card p {
+        font-size: 16px;
+    }
+}
