@@ -117,25 +117,21 @@
                         <c:if test="${not empty injuryContentError}">
                             <div class="error-message">${injuryContentError}</div>
                         </c:if>
-                        
-                         
-						    <div class="form-group ${not empty injuryDateError ? 'invalid' : ''}">
-						        <label for="injuryDate" class="injury-icon-label"><i class="fas fa-calendar-day"></i></label>
-						        <input type="date" id="injuryDate" name="injuryDate" value="${injuryDateStr}" class="${not empty injuryDateError ? 'error-input' : ''}">
-						        <c:if test="${not empty injuryDateError}">
-						            <div class="error-message">${injuryDateError}</div>
-						        </c:if>
-						    </div>
-						
-						    <div class="form-group ${not empty recoveryDateError ? 'invalid' : ''}">
-						        <label for="recoveryDate" class="injury-icon-label"><i class="fas fa-calendar-check"></i></label>
-						        <input type="date" id="recoveryDate" name="recoveryDate" value="${recoveryDateStr}" class="${not empty recoveryDateError ? 'error-input' : ''}">
-						        <c:if test="${not empty recoveryDateError}">
-						            <div class="error-message">${recoveryDateError}</div>
-						        </c:if>
-						    </div>
-						</div>
-                        
+                       
+					    <div class="form-group ${not empty injuryDateError ? 'invalid' : ''}">
+					        <label for="injuryDate" class="injury-icon-label"><i class="fas fa-calendar-day"></i></label>
+					        <input type="date" id="injuryDate" name="injuryDate" value="${injuryDateStr}" class="${not empty injuryDateError ? 'error-input' : ''}">
+					        <c:if test="${not empty injuryDateError}">
+					            <div class="error-message">${injuryDateError}</div>
+					        </c:if>
+					    </div>
+					    <div class="form-group ${not empty recoveryDateError ? 'invalid' : ''}">
+					        <label for="recoveryDate" class="injury-icon-label"><i class="fas fa-calendar-check"></i></label>
+					        <input type="date" id="recoveryDate" name="recoveryDate" value="${recoveryDateStr}" class="${not empty recoveryDateError ? 'error-input' : ''}">
+					        <c:if test="${not empty recoveryDateError}">
+					            <div class="error-message">${recoveryDateError}</div>
+					        </c:if>
+					    </div>
                         <c:if test="${not empty dateError}">
                             <div class="error-message">${dateError}</div>
                         </c:if>

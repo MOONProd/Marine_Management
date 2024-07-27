@@ -1,142 +1,175 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="jakarta.tags.core"  prefix="c" %>  
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>  
+
 <!DOCTYPE html>
-<html lang="ko">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Animal List</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-            background-color: #f0f0f0;
-        }
-        .section {
-            background-color: #ffffff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-            margin-bottom: 20px;
-        }
-        .search-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-        .search-container input {
-            padding: 10px;
-            font-size: 16px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            width: 300px;
-        }
-        .search-container button {
-            padding: 10px 20px;
-            font-size: 16px;
-            margin-left: 10px;
-            color: #fff;
-            background-color: #007BFF;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        .search-container button:hover {
-            background-color: #0056b3;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-        table, th, td {
-            border: 1px solid #ccc;
-        }
-        th, td {
-            padding: 10px;
-            text-align: center;
-        }
-        th {
-            background-color: #f9f9f9;
-        }
-        .status-red {
-            color: red;
-        }
-        .status-green {
-            color: green;
-        }
-        .status-yellow {
-            color: yellow;
-        }
-    </style>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/list_frame_styles.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<title>Protection List</title>
 </head>
 <body>
-    <div class="section">
-        <h2>Section 1</h2>
-        <div class="search-container">
-            <input type="text" id="searchInput" placeholder="Value">
-            <button onclick="searchTable()">Search</button>
+	<header>
+        <div class="container">
+            <div class="logo"><a href="/">MOONPOOL</a></div>
+            <nav>
+                <ul class="hover_effect">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/form">Register</a></li>
+                    <li><a href="/list_protect">Protect</a></li>
+                </ul>
+            </nav>
         </div>
-        <table>
+    </header>
+	<div class="section">
+  		<h2><a href="/list_protect">보호 생물</a></h2>
+  		<hr>
+  		<form class="search-form">
+  <input type="search" value="" placeholder="Search" class="search-input">
+  <button type="submit" class="search-button">
+    <i class="fas fa-search"></i>
+  </button>
+  <div class="search-option">
+    <div>
+      <input name="type" type="radio" value="type-number" id="type-number">
+      <label for="type-number">
+        <i class="fas fa-hashtag"></i>
+        <span>번호</span>
+      </label>
+    </div>
+    
+    <div>
+      <input name="type" type="radio" value="type-type" id="type-type">
+      <label for="type-type">
+        <i class="fas fa-tags"></i>
+        <span>분류</span>
+      </label>
+    </div>
+    <div>
+      <input name="type" type="radio" value="type-name" id="type-name">
+      <label for="type-name">
+        <i class="fas fa-fish"></i>
+        <span>이름</span>
+      </label>
+    </div>
+    <div>
+      <input name="type" type="radio" value="type-injury-date" id="type-injury-date">
+      <label for="type-injury-date">
+        <i class="fas fa-calendar-day"></i>
+        <span>부상시기</span>
+      </label>
+    </div>
+    <div>
+      <input name="type" type="radio" value="type-recovery-date" id="type-recovery-date">
+      <label for="type-recovery-date">
+        <i class="fas fa-calendar-check"></i>
+        <span>호전도</span>
+      </label>
+    </div>
+  </div>
+</form>
+
+  <c:if test="${ !empty list_protect }">
+	  <div class="tbl-header">
+          <table>
             <thead>
-                <tr>
-                    <th>NO</th>
-                    <th>분류</th>
-                    <th>이름</th>
-                    <th>부상시기</th>
-                    <th>호전도</th>
-                </tr>
+              <tr>
+                <th class="number-column">번호</th>
+                <th>분류</th>
+                <th>이름(어명)</th>
+                <th>부상시기</th>
+                <th>호전도</th>
+                <th class="info-column">정보확인</th>
+              </tr>
             </thead>
-            <tbody id="animalTable">
-            <c:forEach items="${list }" var="person">
+          </table>
+      </div>
+      <div class="tbl-content">
+          <table>
+            <tbody id="protectTable">
+            <c:forEach items="${list_protect}" var="marine">
                 <tr>
-                    <td><a href="upform?no=${person.no}">${person.name }</a></td>
-                    <td>해수어</td>
-                    <td>상크스</td>
-                    <td>2024.05.22</td>
-                    <td><span class="status-red">●</span> 2024.09.21</td>
+                  <td class="number-column">${marine.no}</td>
+                  <td>${marine.type}</td>
+                  <td>${marine.name}</td>
+                  <td><fmt:formatDate value="${marine.injuryDate}" pattern="yyyy-MM-dd" /></td>
+                  <td><fmt:formatDate value="${marine.recoveryDate}" pattern="yyyy-MM-dd" /></td>
+                  <td class="info-column"><a href="detail?no=${marine.no}"><i class="fas fa-info-circle"></i></a></td>
                 </tr>
             </c:forEach>
-                <tr>
-                    <td>2</td>
-                    <td>해수어</td>
-                    <td>코식이</td>
-                    <td>2024.06.18</td>
-                    <td><span class="status-green">●</span> 2024.06.21</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>담수어</td>
-                    <td>라본</td>
-                    <td>2024.07.21</td>
-                    <td><span class="status-yellow">●</span> 2024.07.31</td>
-                </tr>
             </tbody>
-        </table>
-    </div>
+          </table>
+      </div>
+   </c:if>
+   </div>	  
+   <c:if test="${empty list_protect}">  
+      등록된 Animal이 없습니다.
+   </c:if>
+  <br>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+  $(document).ready(function() {
+    $('.search-input').focus(function() {
+        $(this).parent().addClass('focus');
+    }).blur(function() {
+        $(this).parent().removeClass('focus');
+    });
 
-    <script>
-        function searchTable() {
-            const input = document.getElementById("searchInput").value.toLowerCase();
-            const table = document.getElementById("animalTable");
-            const rows = table.getElementsByTagName("tr");
+    $('.search-form').submit(function(e) {
+        e.preventDefault();
+        searchTable();
+    });
 
-            for (let i = 0; i < rows.length; i++) {
-                const cells = rows[i].getElementsByTagName("td");
-                let found = false;
-                for (let j = 0; j < cells.length; j++) {
-                    if (cells[j]) {
-                        const cellValue = cells[j].textContent || cells[j].innerText;
+    $('input[name="type"]').click(function() {
+        if ($(this).is(':checked')) {
+            if ($(this).data('waschecked') === true) {
+                $(this).prop('checked', false);
+                $(this).data('waschecked', false);
+            } else {
+                $('input[name="type"]').data('waschecked', false);
+                $(this).data('waschecked', true);
+            }
+        }
+    });
+
+    function searchTable() {
+        const input = $('.search-input').val().toLowerCase();
+        const searchType = $('input[name="type"]:checked').val();
+        const table = document.getElementById("protectTable");
+        const rows = table.getElementsByTagName("tr");
+
+        for (let i = 0; i < rows.length; i++) {
+            const cells = rows[i].getElementsByTagName("td");
+            let found = false;
+
+            for (let j = 0; j < cells.length; j++) {
+                const cellValue = cells[j].textContent || cells[j].innerText;
+                
+                if (searchType === undefined) {
+                    if (cellValue.toLowerCase().indexOf(input) > -1) {
+                        found = true;
+                        break;
+                    }
+                } else {
+                    if (searchType === "type-number" && j === 0 ||
+                        searchType === "type-type" && j === 1 ||
+                        searchType === "type-name" && j === 2 ||
+                        searchType === "type-injury-date" && j === 3 ||
+                        searchType === "type-recovery-date" && j === 4) {
                         if (cellValue.toLowerCase().indexOf(input) > -1) {
                             found = true;
                             break;
                         }
                     }
                 }
-                rows[i].style.display = found ? "" : "none";
             }
+            rows[i].style.display = found ? "" : "none";
         }
-    </script>
+    }
+  });
+  </script>
 </body>
 </html>
