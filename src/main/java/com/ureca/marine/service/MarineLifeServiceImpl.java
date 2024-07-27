@@ -32,17 +32,30 @@ public class MarineLifeServiceImpl implements MarineLifeService {
 
 	@Override
 	public MarineLife read(int no) throws SQLException {
-		return dao.select(no);
+		MarineLife marine = dao.select(no);
+		marine.calculateDaysSinceAdmission();
+		marine.calculateAge();
+		return marine;
 	}
 
 	@Override
 	public List<MarineLife> readAll() throws SQLException {
-		return dao.selectAll();
+		List<MarineLife> marineList = dao.selectAll();
+		for (MarineLife marine : marineList) {
+			marine.calculateDaysSinceAdmission();
+			marine.calculateAge();
+		}
+		return marineList;
 	}
 	
 	@Override
 	public List<MarineLife> readAllProtected() throws SQLException {
-	    return dao.selectProtected();
+		List<MarineLife> marineList = dao.selectProtected();
+		for (MarineLife marine : marineList) {
+			marine.calculateDaysSinceAdmission();
+			marine.calculateAge();
+		}
+		return marineList;
 	}
 
 }

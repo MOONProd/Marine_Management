@@ -134,6 +134,7 @@ nav ul li a:focus {
 .hero-text .sign-up {
     background-color: #007BFF;
     color: white;
+    border-radius: 5px;
 }
 
 .hero-text .learn-more {
@@ -166,7 +167,7 @@ nav ul li a:focus {
 .box {
     background: #f0f0f0;
     border: 1px solid #ddd;
-    border-radius: 8px;
+    border-radius: 10px;
     padding: 20px;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
     text-align: center;
@@ -198,19 +199,10 @@ nav ul li a:focus {
 }
 
 .box.all-friends {
-    background-color: #FFD600; /* All Friends 박스의 색상 */
+    background-color: #f0f0f0; /* All Friends 박스의 색상 */
     color: #000; /* 텍스트 색상 */
 }
 
-.box.new-friends button {
-    margin: 0;
-    padding: 10px 20px;
-    font-size: 16px;
-    border: none;
-    background-color: #007BFF;
-    color: white;
-    cursor: pointer;
-}
 
 .box.new-friends p {
     display: none;
@@ -220,19 +212,118 @@ nav ul li a:focus {
     font-size: 14px;
     color: #666;
 }
+.form-actions button i {
+    margin-right: 8px;
+}
 
-.box button {
-    margin-top: 10px;
+.form-actions {
+    text-align: center;
+}
+
+.form-actions button {
     padding: 10px 20px;
     font-size: 16px;
     border: none;
-    background-color: #007BFF;
-    color: white;
+    border-radius: 5px;
     cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    background: #fff;
+    color: #37474f;
+    transition: color 0.3s;
+    z-index: 1;
+    outline: 1px solid #747474; /* 기본 outline 설정 */   
 }
 
-.box button:hover {
-    background-color: #0056b3;
+.button--aylen.button--inverted {
+    background: none;
+    color: #fff;
+}
+
+.form-actions button::before,
+.form-actions button::after {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    bottom: 100%;
+    left: 0;
+    z-index: -1;
+    transition: transform 0.3s;
+    transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1);
+}
+
+.form-actions button::before {
+    background: #7986cb;
+    .form-actions button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    background: #f6f6f6;
+    color: #37474f;
+    transition: color 0.3s;
+}
+
+.button--aylen.button--inverted {
+    background: none;
+    color: #fff;
+}
+
+.form-actions button::before,
+.form-actions button::after {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    bottom: 100%;
+    left: 0;
+    z-index: -1;
+    transition: transform 0.3s;
+    transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1);
+}
+
+.form-actions button::before {
+    background: #7986cb;
+    transition-delay: 0.175s; /* 이 줄 추가 */
+}
+
+.form-actions button::after {
+    background: #3f51b5;
+}
+
+.form-actions button:hover {
+    color: #fff;
+}
+
+.form-actions button:hover::before,
+.form-actions button:hover::after {
+    transform: translate3d(0, 100%, 0);
+}
+
+.form-actions button:hover::after {
+    transition-delay: 0.175s; /* 이 줄 추가 */
+}
+}
+
+.form-actions button::after {
+    background: #3f51b5;
+}
+
+.form-actions button:hover {
+    color: #fff;
+}
+
+.form-actions button:hover::before,
+.form-actions button:hover::after {
+    transform: translate3d(0, 100%, 0);
+}
+
+.form-actions button:hover::after {
+    transition-delay: 0.175s;
 }
 
 @keyframes slide-up {

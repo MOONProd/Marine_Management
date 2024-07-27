@@ -64,27 +64,32 @@
             <h2>WHAT WE DO</h2>
             <p>THIS IS SOME TEXT INSIDE OF A DIV BLOCK.</p>
             <div class="box new-friends">
-                <h3>New Friends</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                <button onclick="location.href='form'">등록</button>
+                <h3><i class="fas fa-user-plus"></i>새로 온 친구들을 등록해주세요!</h3>
+                 <div class="form-actions">
+                	<button class="button button--aylen" onclick="location.href='form'">등록</button>
+                </div>
             </div>
             <div class="boxes">
                 <div class="box need-protect">
-                    <h3>Need to Protect</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    <button onclick="location.href='list_protect'">검색</button>
+                    <h3><i class="fas fa-shield-alt"></i>보호관리가 필요한 친구들</h3>
+                   <!--  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p> -->
+                   <div class="form-actions">
+                    	<button class="button button--aylen" onclick="location.href='list_protect'">검색</button>
+                    </div>
                 </div>
                 <div class="box all-friends">
-                    <h3>All Friends</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    <button onclick="location.href='list_all'">검색</button>
+                    <h3><i class="fas fa-users"></i>우리 아쿠아리움 친구들</h3>
+                    <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p> -->
+                                       <div class="form-actions">
+                    	<button class="button button--aylen" onclick="location.href='list_all'">검색</button>
+                    </div>
                 </div>
             </div>
         </section>
     </main>
     <footer>
         <div class="container">
-            <p>&copy; 2024 Velocity. All rights reserved.</p>
+            <p>&copy; 2024 MoonPooL. All rights reserved.</p>
         </div>
     </footer>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>

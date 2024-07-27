@@ -1,6 +1,9 @@
 package com.ureca.marine.dto;
 
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 
 public class MarineLife {
@@ -15,6 +18,8 @@ public class MarineLife {
     private String notes;
     private Date injuryDate;
     private Date recoveryDate;
+    private long daysSinceAdmission;
+    private int age;
     
     public MarineLife() {
 		// TODO Auto-generated constructor stub
@@ -123,6 +128,40 @@ public class MarineLife {
 		this.notes = notes;
 	}
 	
+	public long getDaysSinceAdmission() {
+        return daysSinceAdmission;
+    }
+
+    public void setDaysSinceAdmission(long daysSinceAdmission) {
+        this.daysSinceAdmission = daysSinceAdmission;
+    }
+    
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+	
+    public void calculateDaysSinceAdmission() {
+        if (admissionDate != null) {
+            Date currentDate = new Date();
+            long diffInMillies = Math.abs(currentDate.getTime() - admissionDate.getTime());
+            this.daysSinceAdmission = TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS);
+        } else {
+            this.daysSinceAdmission = 0;
+        }
+    }
+    
+    public void calculateAge() {
+        if (birthYear > 0) {
+            int currentYear = LocalDate.now().getYear();
+            this.age = currentYear - birthYear;
+        } else {
+            this.age = 0;
+        }
+    }
 
 	@Override
 	public String toString() {
