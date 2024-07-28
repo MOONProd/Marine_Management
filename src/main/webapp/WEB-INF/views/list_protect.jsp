@@ -137,6 +137,24 @@
 	    </div>
 	</div>
 	<br>
+	<c:if test="${param.updateSuccess == 'true'}">
+        <div id="updateSuccessModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('updateSuccessModal')">&times;</span>
+                <p>수정되었습니다.</p>
+                <button class="confirm-button" onclick="closeModal('updateSuccessModal')">확인</button>
+            </div>
+        </div>
+    </c:if>
+    <c:if test="${param.registerSuccess == 'true'}">
+        <div id="registerSuccessModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('registerSuccessModal')">&times;</span>
+                <p>등록되었습니다.</p>
+                <button class="confirm-button" onclick="closeModal('registerSuccessModal')">확인</button>
+            </div>
+        </div>
+    </c:if>
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<script>
 	    $(document).ready(function() {
@@ -211,6 +229,19 @@
 	            }
 	        }
 	    });
+	    
+	    function closeModal(modalId) {
+	    	 document.getElementById(modalId).style.display = 'none';
+        }
+
+        $(document).ready(function() {
+            if ($('#updateSuccessModal').length) {
+                $('#updateSuccessModal').show();
+            }
+            if ($('#registerSuccessModal').length) {
+                $('#registerSuccessModal').show();
+            }
+        });
 </script>
 </body>
 </html>

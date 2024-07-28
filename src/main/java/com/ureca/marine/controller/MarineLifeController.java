@@ -133,10 +133,10 @@ public class MarineLifeController {
         	}
         	String injuryType = request.getParameter("injuryType");
         	if ("유".equals(injuryType)) {
-        		return "redirect:list_protect"; // 5.
-        	} else {
-        		return "redirect:list_all"; // 5.
-        	}
+                return "redirect:list_protect?registerSuccess=true";
+            } else {
+                return "redirect:list_all?registerSuccess=true";
+            }
         } catch (SQLException e) {
             e.printStackTrace();
             model.addAttribute("error", "데이터베이스 에러 발생: " + e.getMessage());
@@ -270,12 +270,11 @@ public class MarineLifeController {
             return "upform";
         }
 
-        String injuryType = request.getParameter("injuryType");
-        if ("유".equals(injuryType)) {
-            return "redirect:list_protect"; // 5.
+        if ("유".equals(marine.getInjuryType())) {
+            return "redirect:list_protect?updateSuccess=true";
         } else {
-            return "redirect:list_all"; // 5.
-        } // 수정 결과를 list페이지로 확인
+            return "redirect:list_all?updateSuccess=true";
+        }
     }
 
     

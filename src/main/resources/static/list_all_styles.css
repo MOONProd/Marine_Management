@@ -343,3 +343,61 @@ tr:nth-child(even) {
     width: 100px;
     height: 100px;
 }
+.modal {
+	display: none;
+	position: fixed;
+	z-index: 1000;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+	background-color: rgb(0, 0, 0);
+	background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+	background-color: #fefefe;
+	margin: 15% auto;
+	padding: 20px;
+	border: 1px solid #888;
+	width: 80%;
+	max-width: 300px;
+	text-align: center;
+	border-radius: 10px;
+}
+
+.close {
+	color: #003366;
+	float: right;
+	font-size: 28px;
+	font-weight: bold;
+}
+
+.modal-content p {
+        color: #003366; /* 텍스트 색상 변경 */
+}
+
+.close:hover, .close:focus {
+	color: black;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.modal button {
+	padding: 10px 20px;
+	margin: 10px;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.modal .confirm-button {
+	background-color: #3f51b5;
+	color: white;
+}
+
+.modal .cancel-button {
+	background-color: #6c757d;
+	color: white;
+}
