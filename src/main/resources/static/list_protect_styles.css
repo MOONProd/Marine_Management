@@ -86,6 +86,7 @@ nav ul li a:focus {
 	overflow: hidden;
 	text-align: center;
 	color: #003366;
+	z-index: 1;
 }
 .section h2 {
 	margin-top:30px;
@@ -261,6 +262,7 @@ table {
     width: 100%;
     table-layout: fixed;
     border-collapse: collapse;
+    z-index: 5;
 }
 
 th, td {
@@ -325,4 +327,20 @@ tr:nth-child(even) {
 
 .status-green {
 	background-color: #00B700;
+}
+
+.no-animals-message {
+    text-align: center;
+    color: #888;
+    font-size: 24px;
+    margin-top: 20px;
+    z-index: 500;
+}
+
+.no-animals-image {
+    display: block;
+    margin: 0 auto;
+    width: 150px;
+    height: 150px;
+    z-index: 5;
 }

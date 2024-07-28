@@ -9,7 +9,8 @@
 	href="${pageContext.request.contextPath}/form_styles.css">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-<title>생물 정보 수정</title>
+<title>Update Animal Info</title>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
 	function toggleInjuryDetails() {
 		var injuryType = document.getElementById("injuryType").value;
@@ -44,8 +45,23 @@
     }
 
     function deleteRecord() {
-        closeModal();
-        window.location.href = '/delete?no=${marine.no}';
+        $.ajax({
+            url: '/delete',
+            type: 'GET',
+            data: { no: '${marine.no}', injuryType: '${marine.injuryType}' },
+            success: function(response) {
+                var modal = document.getElementById("deleteModal");
+                modal.style.display = "block";
+                $('.confirm-button').click(function() {
+                    modal.style.display = "none";
+                    if ('${marine.injuryType}' === '유') {
+                        window.location.href = 'list_protect';
+                    } else {
+                        window.location.href = 'list_all';
+                    }
+                });
+            }
+        });
     }
 	
 </script>
@@ -61,6 +77,7 @@
 					<li><a href="/">Home</a></li>
 					<li><a href="/form">Register</a></li>
 					<li><a href="/list_protect">Protect</a></li>
+					<li><a href="/list_all">All</a></li>
 				</ul>
 			</nav>
 		</div>

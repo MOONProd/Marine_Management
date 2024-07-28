@@ -18,6 +18,7 @@
                     <li><a href="/">Home</a></li>
                     <li><a href="/form">Register</a></li>
                     <li><a href="/list_protect">Protect</a></li>
+                    <li><a href="/list_all">All</a></li>
                 </ul>
             </nav>
         </div>

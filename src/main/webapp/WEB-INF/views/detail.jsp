@@ -19,6 +19,7 @@
                     <li><a href="/">Home</a></li>
                     <li><a href="/form">Register</a></li>
                     <li><a href="/list_protect">Protect</a></li>
+                    <li><a href="/list_all">All</a></li>
                 </ul>
             </nav>
         </div>
@@ -28,8 +29,8 @@
         <h1>${marine.name}</h1>
         <p><i class="fas fa-tags"></i><strong> 분류:</strong> ${marine.type}</p>
         <p><i class="fas fa-venus-mars"></i><strong> 성별:</strong> ${marine.gender}</p>
-        <p><i class="fas fa-calendar-alt"></i><strong> 입사 날짜:</strong> ${admissionDateStr} (D+${marine.daysSinceAdmission})</p>
         <p><i class="fas fa-birthday-cake"></i><strong> 나이:</strong> ${marine.age}세</p>
+        <p><i class="fas fa-calendar-alt"></i><strong> 입사 날짜:</strong> ${admissionDateStr} (D+${marine.daysSinceAdmission})</p>
         <p><i class="fas fa-band-aid"></i><strong> 부상 유무:</strong> ${marine.injuryType}</p>
         <c:if test="${marine.injuryType == '유'}">
             <div class="profile-info">

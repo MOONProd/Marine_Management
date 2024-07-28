@@ -312,11 +312,11 @@ public class MarineLifeController {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        String injuryType = request.getParameter("injuryType");
-        if ("유".equals(injuryType)) {
-    		return "redirect:list_protect"; // 5.
-    	} else {
-    		return "redirect:list_all"; // 5.
-    	} // 삭제 결과를 list페이지로 확인
+        String referer = request.getHeader("Referer");
+        if (referer.contains("list_protect")) {
+            return "redirect:list_protect";
+        } else {
+            return "redirect:list_all";
+        }
     }
 }

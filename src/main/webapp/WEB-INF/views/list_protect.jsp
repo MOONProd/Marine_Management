@@ -24,6 +24,7 @@
 					<li><a href="/">Home</a></li>
 					<li><a href="/form">Register</a></li>
 					<li><a href="/list_protect">Protect</a></li>
+					<li><a href="/list_all">All</a></li>
 				</ul>
 			</nav>
 		</div>
@@ -122,8 +123,14 @@
 			</div>
 		</c:if>
 	</div>
-	<c:if test="${empty list_protect}">  
-      등록된 Animal이 없습니다.
+	<c:if test="${empty list_protect}">
+	  <script>
+        console.log("No animals message displayed.");
+    </script>
+      <div class="no-animals-message">
+		<p>아픈 친구들이 없어요!</p>
+		<img src="${pageContext.request.contextPath}/happy.jpg" alt="No animals" class="no-animals-image">
+	</div>
    </c:if>
 	<br>
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
