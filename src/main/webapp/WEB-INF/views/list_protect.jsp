@@ -97,8 +97,22 @@
 								<td>${marine.name}</td>
 								<td><fmt:formatDate value="${marine.injuryDate}"
 										pattern="yyyy-MM-dd" /></td>
-								<td><fmt:formatDate value="${marine.recoveryDate}"
-										pattern="yyyy-MM-dd" /></td>
+								<td>
+                                    <c:choose>
+                                        <c:when test="${marine.daysUntilRecovery > 30}">
+                                            <span class="status-circle status-red"></span> <fmt:formatDate value="${marine.recoveryDate}"
+										pattern="yyyy-MM-dd" />
+                                        </c:when>
+                                        <c:when test="${marine.daysUntilRecovery >= 14 && marine.daysUntilRecovery <= 30}">
+                                            <span class="status-circle status-yellow"></span> <fmt:formatDate value="${marine.recoveryDate}"
+										pattern="yyyy-MM-dd" />
+                                        </c:when>
+                                        <c:when test="${marine.daysUntilRecovery < 14}">
+                                            <span class="status-circle status-green"></span> <fmt:formatDate value="${marine.recoveryDate}"
+										pattern="yyyy-MM-dd" />
+                                        </c:when>
+                                    </c:choose>
+                                </td>
 								<td class="info-column"><a href="detail?no=${marine.no}"><i
 										class="fas fa-info-circle"></i></a></td>
 							</tr>

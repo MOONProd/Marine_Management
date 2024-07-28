@@ -307,3 +307,22 @@ td {
 tr:nth-child(even) {
     background-color: #f2f2f2;
 }
+
+.status-circle {
+	display: inline-block;
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+}
+
+.status-red {
+	background-color: #FF2424;
+}
+
+.status-yellow {
+	background-color: #FFE400;
+}
+
+.status-green {
+	background-color: #00B700;
+}
