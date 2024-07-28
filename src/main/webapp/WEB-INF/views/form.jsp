@@ -138,7 +138,7 @@
                         </c:if>
                     </div>
                     <div class="form-actions">
-                        <button type="submit" class="button button--aylen">Register</button>
+                        <button type="submit" class="button button--aylen">등록</button>
                     </div>
                 </div>
             </form>

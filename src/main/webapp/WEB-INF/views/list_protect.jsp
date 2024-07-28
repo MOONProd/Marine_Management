@@ -80,7 +80,7 @@
 						<tr>
 							<th class="number-column">번호</th>
 							<th>분류</th>
-							<th>이름(어명)</th>
+							<th>이름(학명)</th>
 							<th>부상시기</th>
 							<th>호전도</th>
 							<th class="info-column">정보확인</th>
@@ -184,7 +184,7 @@
 	        function searchTable() {
 	            const input = $('.search-input').val().toLowerCase();
 	            const searchType = $('input[name="type"]:checked').val();
-	            const table = document.getElementById("animalTable");
+	            const table = document.getElementById("protectTable");
 	            const rows = table.getElementsByTagName("tr");
 	            let foundAny = false;
 	
@@ -205,8 +205,8 @@
 	                            (searchType === "type-number" && j === 0) ||
 	                            (searchType === "type-type" && j === 1) ||
 	                            (searchType === "type-name" && j === 2) ||
-	                            (searchType === "type-admission-date" && j === 3) ||
-	                            (searchType === "type-notes" && j === 4)
+	                            (searchType === "type-injury-date" && j === 3) ||
+	                            (searchType === "type-recovery-date" && j === 4)
 	                        ) {
 	                            if (cellValue.toLowerCase().indexOf(input) > -1) {
 	                                found = true;

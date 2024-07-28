@@ -89,7 +89,7 @@
 				<tr>
 					<th class="number-column">번호</th>
 					<th>분류</th>
-					<th>이름(어명)</th>
+					<th>이름(학명)</th>
 					<th>입사일</th>
 					<th class="info-column">특이사항 유무</th>
 					<th class="info-column">정보확인</th>

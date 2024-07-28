@@ -19,11 +19,13 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.ureca.marine.dto.MarineLife;
 import com.ureca.marine.service.MarineLifeService;
 
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 
 @Controller //스프링 컨테이너로 객체 관리 받고 싶어요!!
 @RequestMapping("/")
@@ -40,20 +42,48 @@ public class MarineLifeController {
     }
 
     @GetMapping("/")
-    public String start() {
-        return "index";
+    public String start(HttpSession session) {
+        if (session.getAttribute("adminCode") == null) {
+            return "index";
+        } else {
+            return "indexAuthenticated";
+        }
+    }
+  
+    
+    @GetMapping("/adminSignUp")
+    public String adminSignUp() {
+        return "adminSignUp";
+    }
+    
+    @PostMapping("/adminSignUp")
+    public String validateAdmin(@RequestParam("adminCode") String adminCode, RedirectAttributes redirectAttributes, HttpServletRequest request) {
+        if (adminCode == null || !adminCode.equals("0610")) {
+            redirectAttributes.addFlashAttribute("error", "유효하지 않은 관리자 코드입니다.");
+            return "redirect:adminSignUp";
+        }
+        request.getSession().setAttribute("adminCode", adminCode);
+        return "redirect:/";
+    }
+    
+    @GetMapping("/logout")
+    public String logout(HttpSession session) {
+        session.invalidate();
+        return "redirect:/";
     }
 
     @GetMapping("/form")
-    public String form(Model model) { // 입력폼 보이기
-        System.out.println(">>> GET form");
+    public String form(HttpSession session, Model model) {
+        if (session.getAttribute("adminCode") == null) {
+            return "redirect:adminSignUp";
+        }
         MarineLife marine = new MarineLife();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         model.addAttribute("marine", marine);
         model.addAttribute("admissionDateStr", marine.getAdmissionDate() != null ? sdf.format(marine.getAdmissionDate()) : "");
         model.addAttribute("injuryDateStr", marine.getInjuryDate() != null ? sdf.format(marine.getInjuryDate()) : "");
         model.addAttribute("recoveryDateStr", marine.getRecoveryDate() != null ? sdf.format(marine.getRecoveryDate()) : "");
-        return "form"; // "/WEB-INF/views/" + "form" + ".jsp" ==> 5. forward이동    
+        return "form";
     }
 
     @PostMapping("/form")
@@ -123,6 +153,9 @@ public class MarineLifeController {
             marine.setRecoveryDate(null);
             marine.setInjuryContent(null);
         }
+        if (request.getSession().getAttribute("adminCode") == null) {
+            return "redirect:adminSignUp";
+        }
 
         try {
         	if(marine.getNo()==0) {
@@ -152,26 +185,33 @@ public class MarineLifeController {
     }
 
     @GetMapping("/list_all")
-    public String listAll(Model model) { // DB목록출력
+    public String listAll(HttpSession session, Model model) {
+        if (session.getAttribute("adminCode") == null) {
+            return "redirect:adminSignUp";
+        }
         try {
-            List<MarineLife> list = service.readAll(); // 3.
-            model.addAttribute("list", list); // 4.영역에 데이터를 저장! => 왜? 데이터를 View와 공유하기 위해
+            List<MarineLife> list = service.readAll();
+            model.addAttribute("list", list);
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return "list_all"; // 5.
+        return "list_all";
     }
 
     @GetMapping("/list_protect")
-    public String listProtect(Model model) {
+    public String listProtect(HttpSession session, Model model) {
+        if (session.getAttribute("adminCode") == null) {
+            return "redirect:adminSignUp";
+        }
         try {
             List<MarineLife> protectedList = service.readAllProtected();
             model.addAttribute("list_protect", protectedList);
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return "list_protect"; // 보호 필요 생물 목록을 보여주는 뷰
+        return "list_protect";
     }
+
 
     @GetMapping("/upform")
     public String upform(@RequestParam("no") int no, Model model) { // 수정폼 보이기

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Marine Management</title>
+    <title>Marine Admin</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/index_styles.css">
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     
@@ -14,7 +14,7 @@
         <div class="container">
             <div class="logo"><a href="/">MOONPOOL</a></div>
             <nav>
-                <ul>
+                <ul class="hover_effect">
                     <li><a href="/">Home</a></li>
                     <li><a href="/form">Register</a></li>
                     <li><a href="/list_protect">Protect</a></li>
@@ -58,7 +58,7 @@
                 <h1>Welcome to MOONPOOL Aquarium</h1>
                 <p>우리 아쿠아리움 친구들을 만나보세요.</p>
                 <div class="form-actions">
-                	<button class="button button--aylen" onclick="location.href='adminSignUp'">로그인</button>
+                	<button class="button button--aylen" onclick="location.href='/logout'">로그아웃</button>
                 </div>
             </div>
         </section>
@@ -75,15 +75,15 @@
                 <div class="box need-protect">
                     <h3><i class="fas fa-shield-alt"></i>보호관리가 필요한 친구들</h3>
                    <!--  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p> -->
-                   <div class="form-actions button-right">
-                    	<button class="button button--aylen search-size" onclick="location.href='list_protect'">검색</button>
+                   <div class="form-actions">
+                    	<button class="button button--aylen" onclick="location.href='list_protect'">검색</button>
                     </div>
                 </div>
                 <div class="box all-friends">
                     <h3><i class="fas fa-users"></i>우리 아쿠아리움 친구들</h3>
                     <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p> -->
-                    <div class="form-actions button-right">
-                    	<button class="button button--aylen search-size" onclick="location.href='list_all'">검색</button>
+                                       <div class="form-actions">
+                    	<button class="button button--aylen" onclick="location.href='list_all'">검색</button>
                     </div>
                 </div>
             </div>

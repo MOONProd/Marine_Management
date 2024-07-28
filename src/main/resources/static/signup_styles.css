@@ -1,7 +1,7 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background-color: #001f3f; /* 어두운 심해 색 */
+    background-color: #003366; /* 어두운 심해 색 */
     color: #f0f0f0; /* 밝은 폰트 색상 */
 }
 
@@ -99,132 +99,64 @@ nav ul li a:focus {
     object-fit: cover;
 }
 
-.hero {
-	position: relative;
-	text-align: center;
-	
-}
-.hero-text {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-    color: white;
-    text-align: center;
-    z-index: 10;
-}
-
-.hero-text h1 {
-    font-size: 48px;
-    margin: 0;
-}
-
-.hero-text p {
-    font-size: 18px;
-}
-
-.hero-text button {
-    margin: 10px;
-    padding: 10px 20px;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
-}
-
-.hero-text .sign-up {
-    background-color: #007BFF;
-    color: white;
-    border-radius: 5px;
-}
-
-.hero-text .learn-more {
-    background-color: #6c757d;
-    color: white;
-}
-
-.what-we-do {
-    text-align: center;
-    padding: 40px 20px;
-    background: #001f3f; /* 어두운 심해 색 */
-    color: #f0f0f0; /* 밝은 폰트 색상 */
-}
-
-.what-we-do h2 {
-    font-size: 36px;
-    margin-bottom: 10px;
-}
-
-.what-we-do p {
-    font-size: 18px;
-    color: #666;
-}
-
-.boxes {
+.content {
     display: flex;
-    justify-content: space-between;
-}
-
-.box {
-    background: #f0f0f0;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
-    text-align: left;
-    visibility: hidden;
-    flex: 1;
-    margin: 0 10px;
-    height: 280px; /* 두 박스의 높이를 같게 */
-}
-
-.box.new-friends {
-    background-color: #f0f0f0; /* New Friends 박스의 색상 */
-    color: #000; /* 텍스트 색상 */
-    height: 80px; /* 원하는 높이 */
-    margin-bottom: 20px; /* 하단 여백 */
-    display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    padding: 0 20px;
+    min-height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+    
+}
+.section {
+    background: #ffffff;
+    padding: 20px 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    width: 300px;
+    margin: 20px auto;
+    overflow: auto; /* 카드 길이가 길어질 때 스크롤 가능하도록 설정 */
+   /*  max-height: calc(100vh - 90px); */ /* 헤더와 여백을 뺀 최대 높이 설정 */
 }
 
-.box.new-friends h3 {
-    margin: 0;
-    font-size: 24px;
+.section h2 {
+	text-align: center;
+    color: #003366; /* 제목 색상 */
+    margin-top: 0;
 }
 
-.box.need-protect {
-    background-color: #f0f0f0; /* Need to Protect 박스의 색상 */
-    color: #000; /* 텍스트 색상 */
-    font-size: 22px;
-    margin-left: 10px;
+.form-card {
+    display: flex;
+    flex-direction: column;
 }
 
-.box.all-friends {
-    background-color: #f0f0f0; /* All Friends 박스의 색상 */
-    color: #000; /* 텍스트 색상 */
-    font-size: 22px;
-    margin-left: 10px;
-}
-.box.need-protect h3 {
-	margin-top: 5px;
+.form-group {
+	display: flex;
+    flex-direction: column; /* 요소를 수직으로 배치 */
+    align-items: flex-start; /* 요소를 왼쪽 정렬 */
+    margin-bottom: 5px;
+    position: relative;
 }
 
-.box.all-friends h3 {
-	margin-top: 5px;
+label {
+	
+    display: block;
+    margin-bottom: 5px;
+    color: #003366; /* 라벨 색상 */
+    
+}
+
+h2 {
+    text-align: center;
 }
 
 
-.box.new-friends p {
-    display: none;
-}
 
-.box p {
-    font-size: 14px;
-    color: #666;
-}
-.form-actions button i {
-    margin-right: 8px;
+input[type="text"] {
+    width: 300px;
+    padding: 8px;
+    box-sizing: border-box;
 }
 
 .form-actions {
@@ -239,11 +171,12 @@ nav ul li a:focus {
     cursor: pointer;
     position: relative;
     overflow: hidden;
-    background: #fff;
-    color: #37474f;
+    background: #7986cb;
+    color: #fff;
     transition: color 0.3s;
     z-index: 1;
-    outline: 1px solid #747474; /* 기본 outline 설정 */   
+    outline: 1px solid #747474; /* 기본 outline 설정 */
+    width: 300px; 
 }
 
 .button--aylen.button--inverted {
@@ -337,28 +270,19 @@ nav ul li a:focus {
     transition-delay: 0.175s;
 }
 
-@keyframes slide-up {
-    0% {
-        transform: translateY(100px);
-        opacity: 0;
-    }
-    100% {
-        transform: translateY(0);
-        opacity: 1;
-    }
+.error-message {
+	color: #e74c3c;
+	margin-top: 10px;
+	font-weight: bold;
+	display: none;
 }
 
-.box.visible {
-    animation: slide-up 1s forwards;
-    visibility: visible;
-    
-}
-.form-actions.button-right {
-    position: absolute;
-    bottom: 20px;
-    right: 20px;
+.error-message.visible {
+	display: inline-flex;
+	align-items: center;
 }
 
-.search-size {
-	 width: 200px;
+.error-message i {
+	color: #e74c3c; /* 블랙 색상 아이콘 */
+	margin-right: 5px;
 }
