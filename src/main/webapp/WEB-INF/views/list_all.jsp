@@ -120,77 +120,93 @@
 			</table>
 	      </div>
 		</c:if>
-	</div>
 	<c:if test="${empty list}">  
       <div class="no-animals-message">
-		<p>아픈 친구들이 없어요!</p>
-		<img src="${pageContext.request.contextPath}/happy.jpg" alt="No animals" class="no-animals-image">
+		<img src="${pageContext.request.contextPath}/hh.jpg" alt="No animals" class="no-animals-image">
+		<p>등록된 친구들이 없어요!</p>
 	</div>
    </c:if>
+	   <div class="no-results-message" id="noResultsMessage">
+	   		<img src="${pageContext.request.contextPath}/nothing.jpg" alt="No results" class="no-results-image">
+	        <p>검색된 결과가 없습니다.</p>
+	    </div>
+	</div>
 	<br>
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 		<script>
-		
-		$(document).ready(function() {
-			$('.search-input').focus(function() {
-				$(this).parent().addClass('focus');
-			}).blur(function() {
-				$(this).parent().removeClass('focus');
-				});
-			$('.search-form').submit(function(e) {
-				e.preventDefault();
-				searchTable();
-			});
-			$('input[name="type"]').click( function() {
-				if ($(this).is(':checked')) {
-					if ($(this).data('waschecked') === true) {
-						$(this).prop('checked', false);
-						$(this).data('waschecked', false);
-						} 
-					else {
-						$('input[name="type"]').data('waschecked', false);
-						$(this).data('waschecked', true);
-						}
-					}
-				});
+    $(document).ready(function() {
+        $('.search-input').focus(function() {
+            $(this).parent().addClass('focus');
+        }).blur(function() {
+            $(this).parent().removeClass('focus');
+        });
 
-			function searchTable() {
-				const input = $('.search-input').val().toLowerCase();
-				const searchType = $('input[name="type"]:checked').val();
-				const table = document.getElementById("animalTable");
-				const rows = table.getElementsByTagName("tr");
+        $('.search-form').submit(function(e) {
+            e.preventDefault();
+            searchTable();
+        });
 
-				for (let i = 0; i < rows.length; i++) {
-					const cells = rows[i].getElementsByTagName("td");
-					let found = false;
+        $('input[name="type"]').click(function() {
+            if ($(this).is(':checked')) {
+                if ($(this).data('waschecked') === true) {
+                    $(this).prop('checked', false);
+                    $(this).data('waschecked', false);
+                } else {
+                    $('input[name="type"]').data('waschecked', false);
+                    $(this).data('waschecked', true);
+                }
+            }
+        });
 
-					for (let j = 0; j < cells.length; j++) {
-						const cellValue = cells[j].textContent || cells[j].innerText;
+        function searchTable() {
+            const input = $('.search-input').val().toLowerCase();
+            const searchType = $('input[name="type"]:checked').val();
+            const table = document.getElementById("animalTable");
+            const rows = table.getElementsByTagName("tr");
+            let foundAny = false;
 
-						if (searchType === undefined) {
-							if (cellValue.toLowerCase().indexOf(input) > -1) {
-								found = true;
-								break;
-								}
-							} 
-						else {
-							if ((searchType === "type-number" && j === 0) ||
-									(searchType === "type-type" && j === 1) ||
-									(searchType === "type-name" && j === 2) ||
-									(searchType === "type-admission-date" && j === 3) ||
-									(searchType === "type-notes" && j === 4)) {
-									if (cellValue.toLowerCase().indexOf(input) > -1) {
-										found = true;
-										break;
-									}
-								}
-							}
-						}
-					rows[i].style.display = found ? "" : "none";
-					}
-				}
-			});
-	</script>
+            for (let i = 0; i < rows.length; i++) {
+                const cells = rows[i].getElementsByTagName("td");
+                let found = false;
+
+                for (let j = 0; j < cells.length; j++) {
+                    const cellValue = cells[j].textContent || cells[j].innerText;
+
+                    if (searchType === undefined) {
+                        if (cellValue.toLowerCase().indexOf(input) > -1) {
+                            found = true;
+                            break;
+                        }
+                    } else {
+                        if (
+                            (searchType === "type-number" && j === 0) ||
+                            (searchType === "type-type" && j === 1) ||
+                            (searchType === "type-name" && j === 2) ||
+                            (searchType === "type-admission-date" && j === 3) ||
+                            (searchType === "type-notes" && j === 4)
+                        ) {
+                            if (cellValue.toLowerCase().indexOf(input) > -1) {
+                                found = true;
+                                break;
+                            }
+                        }
+                    }
+                }
+                rows[i].style.display = found ? "" : "none";
+                if (found) {
+                    foundAny = true;
+                }
+            }
+            
+            // 검색 결과가 없는 경우 메시지 표시
+            if (!foundAny) {
+                $('#noResultsMessage').show();
+            } else {
+                $('#noResultsMessage').hide();
+            }
+        }
+    });
+</script>
 </body>
 </html>
 

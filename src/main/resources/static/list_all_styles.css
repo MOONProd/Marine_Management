@@ -312,14 +312,34 @@ tr:nth-child(even) {
     text-align: center;
     color: #888;
     font-size: 24px;
-    margin-top: 20px;
-    z-index: 5;
+    margin-top: 50px;
 }
 
 .no-animals-image {
     display: block;
     margin: 0 auto;
-    width: 150px;
-    height: 150px;
-    z-index: 5;
+    width: 100px;
+    height: 100px;
+}
+.no-results-message {
+    text-align: center;
+    color: #888;
+    font-size: 24px;
+    margin-top: 20px;
+    display: none; /* 처음에는 보이지 않도록 설정 */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 5; /* 테이블보다 위에 표시되도록 z-index 설정 */
+}
+
+.no-results-message p {
+    margin-top: 20px;
+}
+.no-results-image {
+	display: block;
+    margin: 0 auto;
+    width: 100px;
+    height: 100px;
 }
