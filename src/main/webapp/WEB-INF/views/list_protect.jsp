@@ -114,8 +114,7 @@
                                         </c:when>
                                     </c:choose>
                                 </td>
-								<td class="info-column"><a href="detail?no=${marine.no}"><i
-										class="fas fa-info-circle"></i></a></td>
+								<td class="info-column"><a href="detail?no=${marine.no}"><img src="${pageContext.request.contextPath}/fishcard.jpg" alt="Animals info" class="info-image"></a></td>
 							</tr>
 						</c:forEach>
 					</tbody>

@@ -40,7 +40,7 @@
 		</div>
 	</header>
 	<div class="section">
-		<h2><a href="/list_all">생물 친구들</a></h2>
+		<h2><a href="/list_all">모든 생물</a></h2>
 		<hr>
 		<form class="search-form">
 			<input type="search" value="" placeholder="Search"
@@ -113,7 +113,7 @@
 							<c:if test="${empty marine.notes}">
 								<td class="info-column">X</td>
 							</c:if>
-							<td class="info-column"><a href="detail?no=${marine.no}"><i class="fas fa-info-circle"></i></a></td>
+							<td class="info-column"><a href="detail?no=${marine.no}"><img src="${pageContext.request.contextPath}/fishcard.jpg" alt="Animals info" class="info-image"></a></td>
 						</tr>
 					</c:forEach>
 				</tbody>

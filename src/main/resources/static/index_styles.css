@@ -152,11 +152,13 @@ nav ul li a:focus {
 .what-we-do h2 {
     font-size: 36px;
     margin-bottom: 10px;
+    margin-top: 0px;
 }
 
 .what-we-do p {
     font-size: 18px;
     color: #666;
+    margin-bottom: 30px;
 }
 
 .boxes {
@@ -166,7 +168,7 @@ nav ul li a:focus {
 
 .box {
     background: #f0f0f0;
-    border: 1px solid #ddd;
+    border: 0.1px solid #ddd;
     border-radius: 10px;
     padding: 20px;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
@@ -175,11 +177,24 @@ nav ul li a:focus {
     flex: 1;
     margin: 0 10px;
     height: 280px; /* 두 박스의 높이를 같게 */
+    overflow: hidden;
+}
+
+.box-background img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: bottom;
+    opacity: 0.85; /* 이미지 불투명도 설정 */
+    z-index: -1; /* 이미지가 다른 내용 뒤에 위치하도록 */
 }
 
 .box.new-friends {
     background-color: #f0f0f0; /* New Friends 박스의 색상 */
-    color: #000; /* 텍스트 색상 */
+    color: #D4F4FA; /* 텍스트 색상 */
     height: 80px; /* 원하는 높이 */
     margin-bottom: 20px; /* 하단 여백 */
     display: flex;
@@ -195,14 +210,14 @@ nav ul li a:focus {
 
 .box.need-protect {
     background-color: #f0f0f0; /* Need to Protect 박스의 색상 */
-    color: #000; /* 텍스트 색상 */
+    color: #fff; /* 텍스트 색상 */
     font-size: 22px;
     margin-left: 10px;
 }
 
 .box.all-friends {
     background-color: #f0f0f0; /* All Friends 박스의 색상 */
-    color: #000; /* 텍스트 색상 */
+    color: #fff; /* 텍스트 색상 */
     font-size: 22px;
     margin-left: 10px;
 }
@@ -353,10 +368,10 @@ nav ul li a:focus {
     visibility: visible;
     
 }
-.form-actions.button-right {
+.form-actions.button-left {
     position: absolute;
     bottom: 20px;
-    right: 20px;
+    left: 20px;
 }
 
 .search-size {

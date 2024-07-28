@@ -401,3 +401,10 @@ tr:nth-child(even) {
 	background-color: #6c757d;
 	color: white;
 }
+
+.info-image {
+    display: block;
+    margin: 0 auto;
+    width: 35px;
+    height: 35px;
+}

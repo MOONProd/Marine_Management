@@ -66,28 +66,41 @@
             <h2>WHAT WE DO</h2>
             <p>이곳에서 모든 친구들을 관리합니다.</p>
             <div class="box new-friends">
+            	<div class="box-background">
+					<img src="${pageContext.request.contextPath}/new_p.jpg" alt="NewFriends Image">
+				</div>
                 <h3><i class="fas fa-user-plus"></i>새로 온 친구들을 등록해주세요!</h3>
                  <div class="form-actions">
                 	<button class="button button--aylen" onclick="location.href='form'">등록</button>
                 </div>
             </div>
-            <div class="boxes">
-                <div class="box need-protect">
-                    <h3><i class="fas fa-shield-alt"></i>보호관리가 필요한 친구들</h3>
-                   <!--  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p> -->
-                   <div class="form-actions button-right">
-                    	<button class="button button--aylen search-size" onclick="location.href='list_protect'">검색</button>
-                    </div>
-                </div>
-                <div class="box all-friends">
-                    <h3><i class="fas fa-users"></i>우리 아쿠아리움 친구들</h3>
-                    <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p> -->
-                    <div class="form-actions button-right">
-                    	<button class="button button--aylen search-size" onclick="location.href='list_all'">검색</button>
-                    </div>
-                </div>
-            </div>
-        </section>
+			<div class="boxes">
+				<div class="box need-protect">
+					<div class="box-background">
+						<img src="${pageContext.request.contextPath}/left_p.jpg" alt="Protect Image">
+					</div>
+					<h3>
+						<i class="fas fa-shield-alt"></i>보호관리가 필요한 친구들
+					</h3>
+					<div class="form-actions button-left">
+						<button class="button button--aylen search-size"
+							onclick="location.href='list_protect'">검색</button>
+					</div>
+				</div>
+				<div class="box all-friends">
+					<div class="box-background">
+						<img src="${pageContext.request.contextPath}/right_p.jpg" alt="All Friends Image">
+					</div>
+					<h3>
+						<i class="fas fa-users"></i>우리 아쿠아리움 친구들
+					</h3>
+					<div class="form-actions button-left">
+						<button class="button button--aylen search-size"
+							onclick="location.href='list_all'">검색</button>
+					</div>
+				</div>
+			</div>
+		</section>
     </main>
     <footer>
         <div class="container">
