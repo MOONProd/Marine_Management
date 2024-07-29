@@ -48,11 +48,11 @@
     <div class="content">
         <div class="section">
             <h2>생물 등록</h2>
-            <form action="/form" method="post">
+            <form method="post">
                 <div class="form-card">
                     <div class="form-group">
                         <label for="animalName" class="icon-label"><i class="fas fa-fish"></i></label>
-                        <input type="text" id="animalName" name="name" value="${marine.name}" placeholder="생물 이름 (학명)" required>
+                        <input type="text" id="animalName" name="name" value="${marine.name}" placeholder="생물 이름 (학명)" required autocomplete="off">
                     </div>
                     <div class="form-group">
                         <label for="animalType" class="icon-label"><i class="fas fa-tags"></i></label>
@@ -94,7 +94,7 @@
 					  <input type="text" id="birthYear" name="birthYear" 
 					         value="${marine.birthYear != null ? marine.birthYear : ''}" 
 					         maxlength="4" class="${not empty error ? 'error-input' : ''}" 
-					         placeholder="태어난 해" required>
+					         placeholder="태어난 해" required autocomplete="off">
 					  <c:if test="${not empty error}">
 					      <div class="error-message">${error}</div>
 					  </c:if>

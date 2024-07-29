@@ -156,6 +156,7 @@ public class MarineLifeController {
         if (request.getSession().getAttribute("adminCode") == null) {
             return "redirect:adminSignUp";
         }
+        
 
         try {
         	if(marine.getNo()==0) {
@@ -166,7 +167,7 @@ public class MarineLifeController {
         	}
         	String injuryType = request.getParameter("injuryType");
         	if ("유".equals(injuryType)) {
-                return "redirect:list_protect?registerSuccess=true";
+                return "redirect:list_protect?registerSuccess=true"; 
             } else {
                 return "redirect:list_all?registerSuccess=true";
             }
@@ -191,6 +192,9 @@ public class MarineLifeController {
         }
         try {
             List<MarineLife> list = service.readAll();
+            for (MarineLife marine : list) {
+                System.out.println(marine);
+            }
             model.addAttribute("list", list);
         } catch (SQLException e) {
             e.printStackTrace();
@@ -230,7 +234,9 @@ public class MarineLifeController {
     
     @PostMapping("/upform")
     public String modify(@Validated @ModelAttribute("marine") MarineLife marine, BindingResult result, Model model, HttpServletRequest request) { // DB수정 요청
-        int currentYear = Calendar.getInstance().get(Calendar.YEAR);
+    	System.out.println("POST data: " + marine);
+    	
+    	int currentYear = Calendar.getInstance().get(Calendar.YEAR);
         Date today = new Date();
         Date admissionDate = marine.getAdmissionDate();
         Date injuryDate = marine.getInjuryDate();

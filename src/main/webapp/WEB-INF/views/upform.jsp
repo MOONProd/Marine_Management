@@ -31,6 +31,10 @@
 
 	// 페이지 로드 시 toggleInjuryDetails 함수를 호출
 	document.addEventListener('DOMContentLoaded', function() {
+		/* console.log('In DOMContentLoaded:');
+	    console.log('Injury Date:', document.getElementById('injuryDate').value);
+	    console.log('Recovery Date:', document.getElementById('recoveryDate').value);
+ */
 		toggleInjuryDetails();
 	});
 	
@@ -92,12 +96,12 @@
 						<label for="animalName" class="icon-label"><i
 							class="fas fa-fish"></i></label> <input type="text" id="animalName"
 							name="name" value="${marine.name}" placeholder="생물 이름 (학명)"
-							required>
+							readonly>
 					</div>
 					<div class="form-group">
 						<label for="animalType" class="icon-label"><i
 							class="fas fa-tags"></i></label> <select id="animalType" name="type"
-							onchange="toggleTypeDetails()" required>
+							onchange="toggleTypeDetails()">
 							<option value="해수어"
 								${'해수어'.equals(marine.type) ? 'selected' : ''}>해수어</option>
 							<option value="담수어"
@@ -132,7 +136,7 @@
 						<label for="admissionDate" class="icon-label"><i
 							class="fas fa-calendar-alt"></i></label> <input type="date"
 							id="admissionDate" name="admissionDate"
-							value="${admissionDateStr}" required>
+							value="${admissionDateStr}" readonly>
 						<c:if test="${not empty admissionDateError}">
 							<div class="error-message">${admissionDateError}</div>
 						</c:if>
@@ -143,7 +147,7 @@
 							id="birthYear" name="birthYear"
 							value="${marine.birthYear != null ? marine.birthYear : ''}"
 							maxlength="4" class="${not empty error ? 'error-input' : ''}"
-							placeholder="태어난 해" required>
+							placeholder="태어난 해" readonly>
 						<c:if test="${not empty error}">
 							<div class="error-message">${error}</div>
 						</c:if>

@@ -136,7 +136,7 @@
 	    </div>
 	</div>
 	<br>
-	<c:if test="${param.updateSuccess == 'true'}">
+	 <c:if test="${param.updateSuccess == 'true'}">
         <div id="updateSuccessModal" class="modal">
             <div class="modal-content">
                 <span class="close" onclick="closeModal('updateSuccessModal')">&times;</span>
@@ -153,7 +153,7 @@
                 <button class="confirm-button" onclick="closeModal('registerSuccessModal')">확인</button>
             </div>
         </div>
-    </c:if>
+    </c:if> 
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<script>
 	    $(document).ready(function() {

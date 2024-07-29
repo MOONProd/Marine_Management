@@ -30,7 +30,7 @@ public interface MarineLifeDAO {
 	@Select("select * from MarineLife where no=#{no}")
 	public MarineLife select(int no)throws SQLException; //특정 marine 한명 조회 => 수정폼/상세페이지
 	
-	@Select("select no,name,type,admissionDate,birthYear,gender,notes from MarineLife")
+	@Select("select * from MarineLife")
 	public List<MarineLife> selectAll()throws SQLException;//모든 marine 조회
 	
 	@Select("select * from MarineLife where injuryType = '유'")
