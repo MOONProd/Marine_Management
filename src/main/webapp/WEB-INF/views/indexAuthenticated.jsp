@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Marine Admin</title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/index_styles.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/index_styles.css">
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     
 </head>
@@ -28,28 +28,28 @@
             <div class="swiper-container">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
-                        <img src="${pageContext.request.contextPath}/aquarium1.jpg" alt="Aquarium 1">
+                        <img src="${pageContext.request.contextPath}/images/aquarium1.jpg" alt="Aquarium 1">
                     </div>
                     <div class="swiper-slide">
-                        <img src="${pageContext.request.contextPath}/aquarium2.jpg" alt="Aquarium 2">
+                        <img src="${pageContext.request.contextPath}/images/aquarium2.jpg" alt="Aquarium 2">
                     </div>
                     <div class="swiper-slide">
-                        <img src="${pageContext.request.contextPath}/aquarium3.jpg" alt="Aquarium 3">
+                        <img src="${pageContext.request.contextPath}/images/aquarium3.jpg" alt="Aquarium 3">
                     </div>
                     <div class="swiper-slide">
-                        <img src="${pageContext.request.contextPath}/aquarium4.jpg" alt="Aquarium 4">
+                        <img src="${pageContext.request.contextPath}/images/aquarium4.jpg" alt="Aquarium 4">
                     </div>
                     <div class="swiper-slide">
-                        <img src="${pageContext.request.contextPath}/aquarium5.jpg" alt="Aquarium 5">
+                        <img src="${pageContext.request.contextPath}/images/aquarium5.jpg" alt="Aquarium 5">
                     </div>
                     <div class="swiper-slide">
-                        <img src="${pageContext.request.contextPath}/aquarium6.jpg" alt="Aquarium 6">
+                        <img src="${pageContext.request.contextPath}/images/aquarium6.jpg" alt="Aquarium 6">
                     </div>
                     <div class="swiper-slide">
-                        <img src="${pageContext.request.contextPath}/aquarium7.jpg" alt="Aquarium 7">
+                        <img src="${pageContext.request.contextPath}/images/aquarium7.jpg" alt="Aquarium 7">
                     </div>
                     <div class="swiper-slide">
-                        <img src="${pageContext.request.contextPath}/aquarium8.jpg" alt="Aquarium 8">
+                        <img src="${pageContext.request.contextPath}/images/aquarium8.jpg" alt="Aquarium 8">
                     </div>
                 </div>
                 <div class="swiper-pagination"></div>
@@ -67,7 +67,7 @@
             <p>이곳에서 모든 친구들을 관리합니다.</p>
             <div class="box new-friends">
                 <div class="box-background">
-				    <img src="${pageContext.request.contextPath}/new_p.jpg" alt="NewFriends Image">
+				    <img src="${pageContext.request.contextPath}/images/new_p.jpg" alt="NewFriends Image">
 				</div>
                 <h3><i class="fas fa-user-plus"></i>새로 온 친구들을 등록해주세요!</h3>
                  <div class="form-actions">
@@ -77,7 +77,7 @@
             <div class="boxes">
 				<div class="box need-protect">
 					<div class="box-background">
-						<img src="${pageContext.request.contextPath}/left_p.jpg" alt="Protect Image">
+						<img src="${pageContext.request.contextPath}/images/left_p.jpg" alt="Protect Image">
 					</div>
 					<h3>
 						<i class="fas fa-shield-alt"></i>보호관리가 필요한 친구들
@@ -89,7 +89,7 @@
 				</div>
 				<div class="box all-friends">
 					<div class="box-background">
-						<img src="${pageContext.request.contextPath}/right_p.jpg" alt="All Friends Image">
+						<img src="${pageContext.request.contextPath}/images/right_p.jpg" alt="All Friends Image">
 					</div>
 					<h3>
 						<i class="fas fa-users"></i>우리 아쿠아리움 친구들

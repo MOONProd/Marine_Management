@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/form_styles.css">
+	href="${pageContext.request.contextPath}/styles/form_styles.css">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 <title>Update Animal Info</title>
@@ -28,8 +28,6 @@
 			recoveryDate.value = ""; // 복귀 날짜 초기화
 		}
 	}
-
-	// 페이지 로드 시 toggleInjuryDetails 함수를 호출
 	document.addEventListener('DOMContentLoaded', function() {
 		/* console.log('In DOMContentLoaded:');
 	    console.log('Injury Date:', document.getElementById('injuryDate').value);

@@ -21,7 +21,7 @@ public class MarineLife {
     private int daysUntilRecovery;
     
     public MarineLife() {
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	public MarineLife(int no, String name, String type, Date admissionDate, Integer birthYear, String gender, String injuryType,
@@ -149,25 +149,6 @@ public class MarineLife {
     public void setDaysUntilRecovery(int daysUntilRecovery) {
         this.daysUntilRecovery = daysUntilRecovery;
     }
-	
-//    public void calculateDaysSinceAdmission() {
-//        if (admissionDate != null) {
-//            Date currentDate = new Date();
-//            long diffInMillies = Math.abs(currentDate.getTime() - admissionDate.getTime());
-//            this.daysSinceAdmission = TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS);
-//        } else {
-//            this.daysSinceAdmission = 0;
-//        }
-//    }
-//    
-//    public void calculateAge() {
-//        if (birthYear > 0) {
-//            int currentYear = LocalDate.now().getYear();
-//            this.age = currentYear - birthYear;
-//        } else {
-//            this.age = 0;
-//        }
-//    }
 
 	@Override
 	public String toString() {

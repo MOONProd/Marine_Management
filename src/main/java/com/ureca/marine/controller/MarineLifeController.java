@@ -32,7 +32,7 @@ import jakarta.servlet.http.HttpSession;
 public class MarineLifeController {
     
     @Autowired
-    MarineLifeService service; // service = null; 기본값
+    MarineLifeService service;
     
     @InitBinder
     public void initBinder(WebDataBinder binder) {
@@ -218,7 +218,7 @@ public class MarineLifeController {
 
 
     @GetMapping("/upform")
-    public String upform(@RequestParam("no") int no, Model model) { // 수정폼 보이기
+    public String upform(@RequestParam("no") int no, Model model) {
         try {
         	MarineLife marine = service.read(no);
             model.addAttribute("marine", marine);
@@ -233,8 +233,8 @@ public class MarineLifeController {
     }
     
     @PostMapping("/upform")
-    public String modify(@Validated @ModelAttribute("marine") MarineLife marine, BindingResult result, Model model, HttpServletRequest request) { // DB수정 요청
-    	System.out.println("POST data: " + marine);
+    public String modify(@Validated @ModelAttribute("marine") MarineLife marine, BindingResult result, Model model, HttpServletRequest request) {
+//    	System.out.println("POST data: " + marine);
     	
     	int currentYear = Calendar.getInstance().get(Calendar.YEAR);
         Date today = new Date();
@@ -325,7 +325,7 @@ public class MarineLifeController {
 
     
     @GetMapping("/detail")
-    public String detail(@RequestParam("no") int no, Model model) { // 수정폼 보이기
+    public String detail(@RequestParam("no") int no, Model model) { 
     	try {
     		MarineLife marine = service.read(no);
             model.addAttribute("marine", marine);
@@ -338,20 +338,10 @@ public class MarineLifeController {
     	}
     	return "detail";
     }
-    
-//    @PostMapping("/detail")
-//    public String edit(@RequestParam("no") int no, Model model) { // 수정폼 보이기
-//    	try {
-//    		model.addAttribute("marine", service.read(no));
-//    	} catch (SQLException e) {
-//    		e.printStackTrace();
-//    	}
-//    	return "redirect:detail";
-//    }
 
 
     @GetMapping("/delete")
-    public String remove(@RequestParam("no") int no, HttpServletRequest request) { // DB삭제 요청
+    public String remove(@RequestParam("no") int no, HttpServletRequest request) {
         try {
             service.remove(no);
         } catch (SQLException e) {

@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Admin Login</title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/signup_styles.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/signup_styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
@@ -26,7 +26,7 @@
           <div class="form-card">
             <div class="form-group">
                 <label for="adminCode">관리자 코드:</label>
-                <input type="text" id="adminCode" name="adminCode" required autocomplete="off">
+                <input type="password" id="adminCode" name="adminCode" required autocomplete="off">
             </div>
             <div class="form-actions">
             	<button type="submit" class="button button--aylen">확인</button>

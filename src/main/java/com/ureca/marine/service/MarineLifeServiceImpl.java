@@ -78,12 +78,6 @@ public class MarineLifeServiceImpl implements MarineLifeService {
 
 	            long diffInMillies = recoveryDate.getTime() - today.getTime();
 	            long daysUntilRecovery = TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS);
-
-//	            System.out.println("calculateDaysUntilRecovery:");
-//	            System.out.println("Today: " + today);
-//	            System.out.println("Recovery Date: " + recoveryDate);
-//	            System.out.println("Days Until Recovery: " + daysUntilRecovery);
-
 	           
 	            marine.setDaysUntilRecovery((int) daysUntilRecovery);
 	        } catch (ParseException e) {
@@ -101,12 +95,6 @@ public class MarineLifeServiceImpl implements MarineLifeService {
 
 	            long diffInMillies = currentDate.getTime() - admissionDate.getTime();
 	            long daysSinceAdmission = TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS);
-
-//	            System.out.println("calculateDaysSinceAdmission:");
-//	            System.out.println("Current Date: " + currentDate);
-//	            System.out.println("Admission Date: " + admissionDate);
-//	            System.out.println("Days Since Admission: " + daysSinceAdmission);
-
 	            
 	            marine.setDaysSinceAdmission((int) daysSinceAdmission);
 	        } catch (ParseException e) {

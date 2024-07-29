@@ -19,7 +19,7 @@ import com.ureca.marine.dto.MarineLife;
 public interface MarineLifeDAO {
 	
 	@Insert("insert into MarineLife (name,type,admissionDate,birthYear,gender,injuryType,injuryContent,notes,injuryDate,recoveryDate) values (#{name},#{type},#{admissionDate},#{birthYear},#{gender},#{injuryType},#{injuryContent},#{notes},#{injuryDate},#{recoveryDate})")
-	public int insert(MarineLife marine)throws SQLException;//나는 sql실행만 전념하겠어!!
+	public int insert(MarineLife marine)throws SQLException;
 	
 	@Update("update MarineLife set gender=#{gender}, injuryType=#{injuryType}, injuryContent=#{injuryContent}, notes=#{notes}, injuryDate=#{injuryDate}, recoveryDate=#{recoveryDate} where no=#{no}")
 	public int update(MarineLife marine)throws SQLException;
@@ -28,10 +28,10 @@ public interface MarineLifeDAO {
 	public int delete(int no)throws SQLException;
 	
 	@Select("select * from MarineLife where no=#{no}")
-	public MarineLife select(int no)throws SQLException; //특정 marine 한명 조회 => 수정폼/상세페이지
+	public MarineLife select(int no)throws SQLException;
 	
 	@Select("select * from MarineLife")
-	public List<MarineLife> selectAll()throws SQLException;//모든 marine 조회
+	public List<MarineLife> selectAll()throws SQLException;
 	
 	@Select("select * from MarineLife where injuryType = '유'")
     public List<MarineLife> selectProtected() throws SQLException;

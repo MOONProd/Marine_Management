@@ -8,7 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/list_protect_styles.css">
+	href="${pageContext.request.contextPath}/styles/list_protect_styles.css">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 <title>Protection List</title>
@@ -114,7 +114,7 @@
                                         </c:when>
                                     </c:choose>
                                 </td>
-								<td class="info-column"><a href="detail?no=${marine.no}"><img src="${pageContext.request.contextPath}/fishcard.jpg" alt="Animals info" class="info-image"></a></td>
+								<td class="info-column"><a href="detail?no=${marine.no}"><img src="${pageContext.request.contextPath}/images/fishcard.jpg" alt="Animals info" class="info-image"></a></td>
 							</tr>
 						</c:forEach>
 					</tbody>
@@ -126,12 +126,12 @@
         console.log("No animals message displayed.");
     </script>
       <div class="no-animals-message">
-		<img src="${pageContext.request.contextPath}/happy.jpg" alt="No animals" class="no-animals-image">
+		<img src="${pageContext.request.contextPath}/images/happy.jpg" alt="No animals" class="no-animals-image">
 		<p>아픈 친구들이 없어요!</p>
 	</div>
    </c:if>
    	   <div class="no-results-message" id="noResultsMessage">
-	   		<img src="${pageContext.request.contextPath}/nothing.jpg" alt="No results" class="no-results-image">
+	   		<img src="${pageContext.request.contextPath}/images/nothing.jpg" alt="No results" class="no-results-image">
 	        <p>검색된 결과가 없습니다.</p>
 	    </div>
 	</div>
@@ -241,6 +241,6 @@
                 $('#registerSuccessModal').show();
             }
         });
-</script>
+	</script>
 </body>
 </html>
