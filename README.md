@@ -18,7 +18,8 @@
 
 ## 프로젝트 소개
 
-MOONPOOL은 해양 생물 관리 시스템입니다. 아쿠아리움의 생물들과 다친 생물들
+MOONPOOL은 해양 생물 관리 시스템입니다. 아쿠아리움의 생물들과 다친 생물들 분류하여 관리할 수 있습니다. 등록, 수정, 삭제, 조회를 수행하는 동안 모달과 안내 UI를 통해 사용자 경험 향상시켰습니다.
+그 외 JSP를 포함하여 Spring MVC 모델을 경험하였던 프로젝트입니다.
 
 ---
 
@@ -41,13 +42,13 @@ MOONPOOL은 해양 생물 관리 시스템입니다. 아쿠아리움의 생물�
 ---
 
 ## 화면 구성 📺
-<!--
-| 메인 페이지  |  Visitor 페이지   |
+
+| 메인 페이지  |  생물 프로필 페이지   |
 | :-------------------------------------------: | :------------: |
-|  <img width="500" src="https://github.com/user-attachments/assets/3e26f054-b9ae-4e04-a852-c1542689b270"/> |  <img width="500" src="https://github.com/user-attachments/assets/d81bc023-f512-43e9-b305-e2baa477d8d8"/>|  
-| 게임 시작 페이지  |  Host 대기방 생성 안내   |  
-| <img width="500" src="https://github.com/user-attachments/assets/ba5ac723-589f-4ad1-a52d-6a5331c4ae38"/>   |  <img width="500" src="https://github.com/user-attachments/assets/ca32c1ec-3993-42ab-b093-64c79f51b57e"/>     |
--->
+|  <img width="500" src="https://github.com/user-attachments/assets/c93be6de-dcb9-4574-b043-c71faa1f73d6"/> |  <img width="500" src="https://github.com/user-attachments/assets/b5bc7e40-e0c3-42aa-8056-431e3a5dfb4b"/>|  
+| 보호 생물 리스트  |  생물 수정 페이지  |  
+| <img width="500" src="https://github.com/user-attachments/assets/c0c15f21-1cf2-486e-8ee6-06602c5c9113"/>   |  <img width="500" src="https://github.com/user-attachments/assets/d4e51c9b-3b02-4eb0-b024-f40deda07239"/>     |
+
 ---
 ## 주요 기능 📦
 
