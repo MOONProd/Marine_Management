@@ -5,6 +5,8 @@
   <img width="300" alt="image" src="https://github.com/user-attachments/assets/2977cb78-1d6f-4576-99f8-8c22fcefe265">
 </div>
 -->
+[진행중] 배포 공부 및 준비
+[진행중] JSP 파일 React로 변경
 
 # Marine Management_MOONPOOL
 > **개인 프로젝트** <br/> **개발기간: 2024.07 ~ 2024.07 배포 세팅 중**
